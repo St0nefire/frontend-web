@@ -32,6 +32,9 @@ import { TagService } from '../services/tagservice' ;
 import { UtilService } from '../services/utilservice' ;
 import { GlobalService } from '../services/globalservice' ;
 
+import { LoginGuard } from '../routeguard/loginguard' ;
+
+
 import { LoadingDirective } from '../directives/loading' ;
 
 import { AddMenuDialog } from '../dialog/addmenu' ;
@@ -40,6 +43,8 @@ import { AutoCompleteComponent } from '../components/autocomplete/autocomplete' 
 import { TextListComponent } from '../components/textlist/textlist' ;
 
 import { AppComponent } from './app.component';
+
+import {routes} from './route';
 
 @NgModule({
   declarations: [
@@ -71,36 +76,23 @@ import { AppComponent } from './app.component';
     TextListComponent   
   ],
   imports: [
-    RouterModule.forRoot([
-    {
-          path: 'welcome',
-          component: WelcomePage
-    },
-    {
-          path: 'login',
-          component: LoginPage
-    },
-    {
-          path: 'register',
-          component: RegisterPage
-    },
-    {
-          path: 'home',
-          component: HomePage
-    },
-    { 
-        path: '', 
-        redirectTo: '/welcome', 
-        pathMatch: 'full' 
-    }
-    ]),
+    RouterModule.forRoot(routes),
     BrowserModule,
     CommonModule,
     FormsModule,
     HttpModule,
     JsonpModule
   ],
-  providers: [CredService, MasterMenuService, ScheduledPackageService, MenuIndividualService, TagService, UtilService, GlobalService],
+  providers: 
+  [ CredService, 
+    MasterMenuService, 
+    ScheduledPackageService, 
+    MenuIndividualService, 
+    TagService, 
+    UtilService, 
+    GlobalService,
+    LoginGuard
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

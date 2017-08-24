@@ -16,9 +16,12 @@ import { MenuPaketGroup } from '../menupaketgroup/menupaketgroup'
  })
 export class HomePage {
     
+    isError: boolean = false;
+    
     constructor(private mmService: MasterMenuService, private miService: MenuIndividualService, private spService: ScheduledPackageService, private utilService: UtilService, private tagService: TagService) {
 //        console.log(" NUMBER OF DAYS: " + (new Date((new Date()).getFullYear(), (new Date()).getMonth() + 1, 0)).getDate());
         setTimeout(() => {
+            
             let obs = this.mmService.getMasterMenus();
             obs.subscribe(
                 data => {
@@ -28,7 +31,7 @@ export class HomePage {
                     }                    
                 },
                 error => {
-                    alert("ERROR: " + error);
+                    this.isError = true;
                 }
             )
             
@@ -41,7 +44,7 @@ export class HomePage {
                     }
                 },
                 error => {
-                    alert("ERROR: " + error);
+                    this.isError = true;
                 }
             )
 
@@ -55,7 +58,7 @@ export class HomePage {
                     }
                 },
                 error => {
-                    alert("ERROR: " + error);
+                    this.isError = true;
                 }
             )
             
@@ -68,7 +71,7 @@ export class HomePage {
                     }
                 },
                 error => {
-                    alert("ERROR: " + error);
+                    this.isError = true;
                 }
             )
         }, 1500);

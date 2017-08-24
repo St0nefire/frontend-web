@@ -24,8 +24,8 @@ export class AddMenuPaket {
     scheduledPackage: any = {name: "", konten: "", memo: "", price: null, minOrder: null, menus: null};
     formData:FormData ;
     tags: any[] = [{id: 0, tagName: "RETRIEVING DATA, PLEASE WAIT"}]
+    isLoading: boolean = false;
     
-//    @ViewChild("inputFakeFile") inputFakeFile: any;
     @ViewChild("inputImage") inputImage: any;
     @ViewChild("autoComplete") autoComplete: AutoCompleteComponent;
     
@@ -86,9 +86,8 @@ export class AddMenuPaket {
     
     submit() {
         let obs ;
-        
         let tags = this.autoComplete.getTags();
-        
+        this.isLoading = true;
         if(this.scheduledPackage.id) {
             obs = this.scheduledPackageService.editScheduledPackage(this.scheduledPackage.id, this.scheduledPackage.name, this.scheduledPackage.konten, 
                 this.scheduledPackage.memo, this.scheduledPackage.price, this.scheduledPackage.minOrder, this.scheduledPackage.available, tags, 
@@ -97,19 +96,24 @@ export class AddMenuPaket {
         else
             obs = this.scheduledPackageService.addSecheduledPackage(this.scheduledPackage.name, this.scheduledPackage.konten, 
                 this.scheduledPackage.memo, this.scheduledPackage.price, this.scheduledPackage.minOrder, tags, this.scheduledPackage.menus, this.image);
-            
-        obs.subscribe(
-            data => {
-                if(data.errorMessage) {
-                    alert("ERROR RESPONSE: " + data.errorMessage);
-                    return;
+        
+        setTimeout(() => {
+            obs.subscribe(
+                data => {
+                    if(data.errorMessage) {
+                        alert("ERROR RESPONSE: " + data.errorMessage);
+                        return;
+                    }
+                    this.okButtonClicked.emit(data);
+                },
+                error => {
+                    alert("ERROR: " + error);
+                },
+                () => {
+                    this.isLoading = false;
                 }
-                this.okButtonClicked.emit(data);
-            },
-            error => {
-                alert("ERROR: " + error);
-            }
-        )
+            )
+        }, 1500);
     }
     
     setMenuHarian(obj) {

@@ -36,7 +36,7 @@ export class MenuIndividualGroup {
     }
     
     updateMenuIndividual(mi) {
-        this.menuIndividual.updateMenuIndividual(mi);
+        this.menuIndividual.updateObjects(mi);
         this.currentView = 'menuindividual';
     }    
 }

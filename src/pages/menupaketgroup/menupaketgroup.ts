@@ -35,7 +35,7 @@ export class MenuPaketGroup {
     
     updateMenuPaket(sp) {
 //        this.utilService.printObject("UPDATE SP: ", sp);
-        this.menuPaket.updateMenuPaket(sp);
+        this.menuPaket.updateObjects(sp);
         this.currentView = 'menupaket';
     }    
 }

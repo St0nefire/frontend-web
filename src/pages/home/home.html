@@ -17,9 +17,12 @@
     <div class="row">
         <div class="col-lg-12 col-xl-12">
             <header></header>
+            <div id="alert_error" class="alert alert-danger" role="alert" [hidden]="!isError">
+                <strong>Error ketika mengambil data.</strong> Silakan periksa koneksi atau coba lagi beberapa saat
+            </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="!isError">
         <div class="col-lg-12 col-xl-12">
             <div id="main" class="container-fluid">
                 <div id="main_actions" class="row "> 

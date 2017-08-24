@@ -36,7 +36,7 @@ export class MasterMenuGroup {
     }
     
     updateMasterMenus(mm) {
-        this.masterMenu.updateMasterMenus(mm);
+        this.masterMenu.updateObjects(mm);
         this.currentView = 'mastermenu';
     }    
 }

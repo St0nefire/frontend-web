@@ -25,6 +25,7 @@ export class AddMenuIndividual {
     menuIndividual: any = {name: "", konten: "", memo: "", price: null, tags: null, menus: null};
     formData:FormData ;
     showMenu: boolean = false;
+    isLoading: boolean = false;
 //    menus: any[] = [];
     
     @ViewChild("inputName") inputName: any;
@@ -36,22 +37,13 @@ export class AddMenuIndividual {
     
     @Output()
     okButtonClicked: EventEmitter<any> = new EventEmitter<any>();    
-    
-//    tags: any[] = [{id: 0, tagName: "RETRIEVING DATA, PLEASE WAIT"}];
-    
+        
     public setMenuIndividual(mi) {
-//        this.utilservice.printObject("MI: ", mi);
         if(mi) {
             this.menuIndividual = {id: mi.id, name: mi.name, konten: mi.konten, memo: mi.memo, price: mi.price, tags: mi.tags, image: mi.image, menus: mi.menus}
             this.fileUrl = this.credService.getImageURL(mi.image);
             this.fileName = mi.image;
             this.image = null;
-//            this.menus = [];
-//            if(mi.menus && mi.menus.length > 0) {
-//                for(var i=0; i < mi.menus.length ; i++) {
-//                    this.menus.push(mi.menus[i].menu);
-//                }
-//            }
         }
         else {
             this.menuIndividual = {name: "", konten: "", memo: "", price: null, tags: null, menus: null};
@@ -95,8 +87,8 @@ export class AddMenuIndividual {
     
     submit() {
         let obs ;
-        
         let tags: any[] = this.autoComplete.getTags();
+        this.isLoading = true;
         if(this.menuIndividual.id) {
             obs = this.menuIndovidualService.editMenuIndividual(this.menuIndividual.id, this.menuIndividual.name, this.menuIndividual.konten, 
                 this.menuIndividual.memo, this.menuIndividual.price, this.menuIndividual.available, tags, this.menuIndividual.menus, this.image);
@@ -105,18 +97,23 @@ export class AddMenuIndividual {
             obs = this.menuIndovidualService.addMenuIndividual(this.menuIndividual.name, this.menuIndividual.konten, 
                 this.menuIndividual.memo, this.menuIndividual.price, tags, this.menuIndividual.menus, this.image);
             
-        obs.subscribe(
-            data => {
-                if(data.errorMessage) {
-                    alert("ERROR RESPONSE: " + data.errorMessage);
-                    return;
+        setTimeout(() => {
+            obs.subscribe(
+                data => {
+                    if(data.errorMessage) {
+                        alert("ERROR RESPONSE: " + data.errorMessage);
+                        return;
+                    }
+                    this.okButtonClicked.emit(data);
+                },
+                error => {
+                    alert("ERROR: " + error);
+                },
+                () => {
+                    this.isLoading = false;
                 }
-                this.okButtonClicked.emit(data);
-            },
-            error => {
-                alert("ERROR: " + error);
-            }
-        )
+            )
+        }, 1500);
     }
         
     getTags() {
@@ -129,15 +126,12 @@ export class AddMenuIndividual {
    
    handleAddedMenu(menus) {
        this.showMenu = false;
-//       this.utilservice.printObject("M: ", menus)
        if(menus) {
             this.menuIndividual.menus= [];
             for(var i = 0; i < menus.length; i++) {
                 this.menuIndividual.menus.push({menu: menus[i]});
             }
        }
-//       this.utilservice.printObject("M: ", this.menuIndividual)
-//       this.menus = menus;
    }
    
    handleCanceledMenu() {

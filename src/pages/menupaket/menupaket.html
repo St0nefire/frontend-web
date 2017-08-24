@@ -42,7 +42,7 @@
 </div>-->
 
 
-<div id="menupaket" class="container-fluid">
+<!--<div id="menupaket" class="container-fluid" [loading]="isLoading">
     <div class="row">
         <div class="col-lg-12 col-xl-12">
             <div id="header">
@@ -93,6 +93,68 @@
                 <label id="label_entries">
                     {{(listMenuPaket) ? ("Showing " + listMenuPaket.length + " of " + getTotalMenuPaket() + 
                                 (getTotalMenuPaket() > 1 ? " entries " : " entry ")) : ""}}
+                </label>
+                <button [ngStyle]="getStyleFor(-1)" (click)="goToPreviousPage()" >Previous</button>
+                <button [ngStyle]="getStyleFor(0)" *ngIf="arrPageNum[0].value != 0" (click)="goToPage(arrPageNum[0].value)">{{arrPageNum[0].value}}</button>
+                <button [ngStyle]="getStyleFor(1)" *ngIf="arrPageNum[1].value != 0" (click)="goToPage(arrPageNum[1].value)">{{arrPageNum[1].value}}</button>
+                <button [ngStyle]="getStyleFor(2)" *ngIf="arrPageNum[2].value != 0" (click)="goToPage(arrPageNum[2].value)">{{arrPageNum[2].value}}</button>
+                <button [ngStyle]="getStyleFor(3)" (click)="goToNextPage()">Next</button>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<div id="menupaket" class="container-fluid" [loading]="isLoading">
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <div id="header">
+                <div id="left_header">
+                    <h1>Menu Paket</h1>
+                    <button class="btn btn-primary" (click)="signalAddButtonClicked()">
+                         <i class="fa fa-plus-circle align-middle" aria-hidden="true"></i>
+                         <span class="align-middle">Tambah Menu Paket</span>
+                     </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <div id="list_menupaket" class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4 col-xl-4" *ngFor="let row of getRowNumber(); let i = index;">
+                        <div class="card area_menupaket" [ngStyle]="i >= listObjects.length ? {'visibility': 'hidden'} : {}">
+                            <h4 class="card-title">
+                                {{i < listObjects.length ? listObjects[i].name : '' }}
+                            </h4>
+                            <img class="card-img-top" [src]="i < listObjects.length ? getImageURL(listObjects[i].image) : ''">
+                            <div class="card-block" style="overflow-y: true">
+                                <div class="area_menudetail">
+                                    <p class="card-text">
+                                        {{i < listObjects.length ? listObjects[i].konten : '' }}
+                                    </p>
+                                </div>
+                                <button class="btn btn-info" (click)="signalEditButtonClicked(listObjects[i])">
+                                    <i class="fa fa-pencil-square-o align-middle" aria-hidden="true"></i>
+                                    <span class="align-middle">Ubah</span>
+                               </button>
+                                <button class="btn btn-danger" (click)="deleteMenuPaket(listObjects[i])">
+                                     <i class="fa fa-trash-o align-middle" aria-hidden="true"></i>
+                                     <span class="align-middle">Hapus</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <div id="pagenumber_area">
+                <label id="label_entries">
+                    {{(listObjects.length > 0) ? ("Showing " + listObjects.length + " of " + getTotalObjects() + 
+                                (getTotalObjects() > 1 ? " entries " : " entry ")) : ""}}
                 </label>
                 <button [ngStyle]="getStyleFor(-1)" (click)="goToPreviousPage()" >Previous</button>
                 <button [ngStyle]="getStyleFor(0)" *ngIf="arrPageNum[0].value != 0" (click)="goToPage(arrPageNum[0].value)">{{arrPageNum[0].value}}</button>

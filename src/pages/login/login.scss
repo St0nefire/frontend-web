@@ -61,6 +61,10 @@
     height: 100%;
     width: 100%;
     border: 1px solid black;*/
+
+    .row {
+        margin-top: 1rem;
+    }
         
     #main {
         margin-top: 4rem;
@@ -82,8 +86,12 @@
                     }
 
                     #button_facebooklogin {
-                        font-size: 1.5em;
-                        margin: 1%;
+                        background: #3B5998;
+                        border-radius: 0;
+                        color: #fff;
+                        border-width: 1px;
+                        border-style: solid;
+                        border-color: #263961; 
                     }
                 }
             }

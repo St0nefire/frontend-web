@@ -24,6 +24,7 @@ export class RegisterPage {
     user: any = {name: "", email: "", password: "", phoneNumber: "", profilePicture: ""};
     tenant: any = {name: "", email: "", password: "", phoneNumber: "", profilePicture: "", description: ""};
     formData:FormData ;
+    headerTitle: string = "Pendaftaran step 1";
     
     @ViewChild("inputFakeFile") inputFakeFile: any;
     @ViewChild("inputTenantFakeFile") inputTenantFakeFile: any;
@@ -36,10 +37,12 @@ export class RegisterPage {
     
             
     next() {
+        this.headerTitle = "Pendaftaran Step 2";
         this.currentView = "user";
     }
     
     prev() {
+        this.headerTitle = "Pendaftaran Step 1";
         this.currentView = "tenant";
     }
 

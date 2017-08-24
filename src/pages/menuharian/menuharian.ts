@@ -18,11 +18,11 @@ export class MenuHarian {
    rowNumber = 6;
    colNumber = 6;
    maxIndex = 31;
-   _menus: any[];
+   _menus: any[] = [];
    showMenu: boolean = false;
    menuDate: number = 0;
-   currentMenus: any[];
-   table: any[][];
+   currentMenus: any[] = [];
+   table: any[][] = [];
    
    @ViewChild("addMenuDlg") addMenuDlg: AddMenuDialog;
 

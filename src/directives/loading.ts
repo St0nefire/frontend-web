@@ -17,7 +17,7 @@ export class LoadingDirective {
         this.iDiv.style.display = "flex";
         this.iDiv.style.justifyContent = "center"
         this.iDiv.style.alignItems = "center";
-        this.iDiv.style.position = "absolute";
+        this.iDiv.style.position = "fixed";
         this.iDiv.style.top = "0px";
         this.iDiv.style.left = "0px";
         this.iDiv.style.width = "100%";

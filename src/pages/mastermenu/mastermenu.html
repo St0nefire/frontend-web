@@ -1,79 +1,4 @@
 <!--
-<div id="mastermenu" >    
-    <div id="header">
-        <div id="search_box">
-            <label id="label_text">Search</label>
-            <input #inputSearch id="input_text" type="text" (keyup)="filter(inputSearch)">
-        </div>
-        <div id="left_header">
-            <h1>Master Menu</h1>
-            <button id="button_tambahmastermenu" (click)="signalAddButtonClicked()">Tambah master menu</button>
-        </div>
-    </div>
-    
-    <table id="table_main" border=1 frame=void rules=rows>
-        <thead>
-         <tr>
-            <th style="width: 5%">No.</th>
-            <th style="width: 15%">Gambar</th>
-            <th style="width: 15%">Nama menu</th>
-            <th style="width: 20%">Detail menu</th>
-            <th style="width: 20%">Memo</th>
-            <th style="width: 10%">Status aktif</th>
-            <th style="width: 15%">Aksi</th>
-         </tr>
-        </thead>
-        <tbody *ngIf="listMasterMenu != null" >
-            <tr *ngFor="let n of getRowNumber();  let i = index" 
-                [ngStyle]="((!listMasterMenu) || i >= listMasterMenu.length) ? {'visibility': 'hidden'} : {}">
-                
-               <td>{{(listMasterMenu) && (i < listMasterMenu.length) ? listMasterMenu[i].index: 0}}</td>
-               <td class="column_image">
-                   <img [src]="(listMasterMenu) && (i < listMasterMenu.length) ? getImageURL(listMasterMenu[i].image) : ''">
-               </td>
-               <td>
-                   {{(listMasterMenu) && (i < listMasterMenu.length) ? listMasterMenu[i].name : ''}}
-               </td>
-               <td class="column_detail">
-                   <div class="area_content">
-                       {{(listMasterMenu) && (i < listMasterMenu.length) ? listMasterMenu[i].konten : ''}}
-                   </div>
-               </td>
-               <td class="column_memo">
-                   <div class="area_memo">
-                       {{(listMasterMenu) && (i < listMasterMenu.length) ? listMasterMenu[i].memo : ''}}
-                   </div>
-               </td>
-               <td>
-                   <button class="button_active" 
-                           [ngStyle]="getActiveStyleForIndex(i)"
-                           (click)="toogleActiveStatus(listMasterMenu[i])">
-                       {{(listMasterMenu) && (i < listMasterMenu.length) ? (listMasterMenu[i].active ? 'Aktif' : 'Tidak') : ''}}
-                   </button>
-               </td>
-               <td>
-                   <button class="button_edit" (click)="signalEditButtonClicked(listMasterMenu[i])">Ubah</button>
-                   <button class="button_delete" (click)="deleteMasterMenu(listMasterMenu[i])">Hapus</button>
-               </td>
-            </tr>
-        </tbody>
-    </table>
-    <div id="pagenumber_area">
-        <label id="label_entries">
-            {{(listMasterMenu) ? ("Showing " + listMasterMenu.length + " of " + getTotalMasterMenu() + 
-                        (getTotalMasterMenu() > 1 ? " entries " : " entry ")) : ""}}
-        </label>
-        <button [ngStyle]="getStyleFor(-1)" (click)="goToPreviousPage()" >Previous</button>
-        <button [ngStyle]="getStyleFor(0)" *ngIf="arrPageNum[0].value != 0" (click)="goToPage(arrPageNum[0].value)">{{arrPageNum[0].value}}</button>
-        <button [ngStyle]="getStyleFor(1)" *ngIf="arrPageNum[1].value != 0" (click)="goToPage(arrPageNum[1].value)">{{arrPageNum[1].value}}</button>
-        <button [ngStyle]="getStyleFor(2)" *ngIf="arrPageNum[2].value != 0" (click)="goToPage(arrPageNum[2].value)">{{arrPageNum[2].value}}</button>
-        <button [ngStyle]="getStyleFor(3)" *ngIf="arrPageNum[3].value != 0" (click)="goToPage(arrPageNum[3].value)">{{arrPageNum[3].value}}</button>
-        <button [ngStyle]="getStyleFor(4)" *ngIf="arrPageNum[4].value != 0" (click)="goToPage(arrPageNum[4].value)">{{arrPageNum[4].value}}</button>
-        <button [ngStyle]="getStyleFor(5)" (click)="goToNextPage()">Next</button>
-        <button id="button_test" >button_test</button>
-    </div>
-</div>-->
-
 <div id="mastermenu" class="container-fluid" [loading]="isLoading"> 
     <div class="row">
         <div class="col-lg-12 col-xl-12">
@@ -84,7 +9,7 @@
                 </div>
                 <div id="left_header">
                     <h1>Master Menu</h1>
-                    <!--<button id="button_tambahmastermenu" class="btn" (click)="signalAddButtonClicked()">Tambah master menu</button>-->
+                    <button id="button_tambahmastermenu" class="btn" (click)="signalAddButtonClicked()">Tambah master menu</button>
                     <button class="btn btn-primary" (click)="signalAddButtonClicked()">
                        <i class="fa fa-plus-circle align-middle" aria-hidden="true"></i>
                         <span class="align-middle">Tambah Master Menu</span>
@@ -137,8 +62,8 @@
                            </button>
                        </td>
                        <td>
-                           <!--<button class="button_edit" (click)="signalEditButtonClicked(listMasterMenu[i])">Ubah</button>-->
-                           <!--<button class="button_delete" (click)="deleteMasterMenu(listMasterMenu[i])">Hapus</button>-->
+                           <button class="button_edit" (click)="signalEditButtonClicked(listMasterMenu[i])">Ubah</button>
+                           <button class="button_delete" (click)="deleteMasterMenu(listMasterMenu[i])">Hapus</button>
                            <button class="btn btn-info" (click)="signalEditButtonClicked(listMasterMenu[i])">
                                 <i class="fa fa-pencil-square-o align-middle" aria-hidden="true"></i>
                                 <span class="align-middle">Ubah</span>
@@ -167,5 +92,101 @@
         </div>
     </div>
 </div>
+
+-->
+
+
+<div id="mastermenu" class="container-fluid" [loading]="isLoading"> 
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <div id="header">
+                <div id="search_box">
+                    <label id="label_text">Search</label>
+                    <input #inputSearch id="input_text" type="text" (keyup)="filter(inputSearch)">
+                </div>
+                <div id="left_header">
+                    <h1>Master Menu</h1>
+                    <!--<button id="button_tambahmastermenu" class="btn" (click)="signalAddButtonClicked()">Tambah master menu</button>-->
+                    <button class="btn btn-primary" (click)="signalAddButtonClicked()">
+                       <i class="fa fa-plus-circle align-middle" aria-hidden="true"></i>
+                        <span class="align-middle">Tambah Master Menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <table id="table_main" border=1 frame=void rules=rows>
+                <thead>
+                 <tr>
+                    <th style="width: 5%">No.</th>
+                    <th style="width: 13%">Gambar</th>
+                    <th style="width: 12%">Nama menu</th>
+                    <th style="width: 20%">Detail menu</th>
+                    <th style="width: 20%">Memo</th>
+                    <th style="width: 10%">Status aktif</th>
+                    <th style="width: 20%">Aksi</th>
+                 </tr>
+                </thead>
+                <tbody *ngIf="listObjects != null" >
+                    <tr *ngFor="let n of getRowNumber();  let i = index" 
+                        [ngStyle]="i >= listObjects.length ? {'visibility': 'hidden'} : {}">
+
+                       <td>{{i < listObjects.length ? listObjects[i].index: 0}}</td>
+                       <td class="column_image">
+                           <img [src]="i < listObjects.length ? getImageURL(listObjects[i].image) : ''">
+                       </td>
+                       <td>
+                           {{i < listObjects.length ? listObjects[i].name : ''}}
+                       </td>
+                       <td class="column_detail">
+                           <div class="area_content">
+                               {{i < listObjects.length ? listObjects[i].konten : ''}}
+                           </div>
+                       </td>
+                       <td class="column_memo">
+                           <div class="area_memo">
+                               {{i < listObjects.length ? listObjects[i].memo : ''}}
+                           </div>
+                       </td>
+                       <td>
+                           <button class="button_active" 
+                                   [ngStyle]="getActiveStyleForIndex(i)"
+                                   (click)="toogleActiveStatus(listObjects[i])">
+                               {{i < listObjects.length ? (listObjects[i].active ? 'Aktif' : 'Tidak') : ''}}
+                           </button>
+                       </td>
+                       <td>
+                           <button class="btn btn-info" (click)="signalEditButtonClicked(listObjects[i])">
+                                <i class="fa fa-pencil-square-o align-middle" aria-hidden="true"></i>
+                                <span class="align-middle">Ubah</span>
+                           </button>
+                           <button class="btn btn-danger" (click)="deleteMasterMenu(listObjects[i])">
+                                <i class="fa fa-trash-o align-middle" aria-hidden="true"></i>
+                                <span class="align-middle">Hapus</span>
+                           </button>
+                       </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="pagenumber_area">
+                <label id="label_entries">
+                    {{(getTotalObjectsInCurrentPage() > 0) ? ("Showing " + getTotalObjectsInCurrentPage() + " of " + getTotalObjects() + 
+                                (getTotalObjects() > 1 ? " entries " : " entry ")) : ""}}
+                </label>
+                <button [ngStyle]="getStyleFor(-1)" (click)="goToPreviousPage()" >Previous</button>
+                <button [ngStyle]="getStyleFor(0)" *ngIf="arrPageNum[0].value != 0" (click)="goToPage(arrPageNum[0].value)">{{arrPageNum[0].value}}</button>
+                <button [ngStyle]="getStyleFor(1)" *ngIf="arrPageNum[1].value != 0" (click)="goToPage(arrPageNum[1].value)">{{arrPageNum[1].value}}</button>
+                <button [ngStyle]="getStyleFor(2)" *ngIf="arrPageNum[2].value != 0" (click)="goToPage(arrPageNum[2].value)">{{arrPageNum[2].value}}</button>
+                <button [ngStyle]="getStyleFor(3)" *ngIf="arrPageNum[3].value != 0" (click)="goToPage(arrPageNum[3].value)">{{arrPageNum[3].value}}</button>
+                <button [ngStyle]="getStyleFor(4)" *ngIf="arrPageNum[4].value != 0" (click)="goToPage(arrPageNum[4].value)">{{arrPageNum[4].value}}</button>
+                <button [ngStyle]="getStyleFor(5)" (click)="goToNextPage()">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 

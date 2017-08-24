@@ -54,9 +54,15 @@
 
 
 #home {
+    
     .row {
         margin-top: 1rem;
     }
+    
+    #alert_error {
+        margin-top: 1rem;
+    }
+    
     #main {        
 /*        #main_actions{
             display: flex;

@@ -1,5 +1,5 @@
 
-<div id="addmenuindividual" class="container-fluid">
+<div id="addmenuindividual" class="container-fluid" [loading]="isLoading">
     <addmenu #addMenuDlg [show]="showMenu" 
             (okButtonClicked)="handleAddedMenu($event)"
             (cancelButtonClicked)="handleCanceledMenu()"
