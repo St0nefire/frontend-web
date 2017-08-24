@@ -1,0 +1,92 @@
+/*
+#login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+        
+    #main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 80%;
+        
+        #form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            height: 100%;
+            
+            #heading {
+                margin: 1%;
+            }
+            
+            #input_name, #input_password {
+                font-size: 2em;
+                margin: 1%;
+            }
+            
+            #link_forget {
+                width: 100%;
+                text-align: right;
+                color: red;
+            }
+            
+            #button_login {
+                width: 80%;
+                font-size: 2em;
+                margin: 1%;
+            }
+            
+            #button_facebooklogin {
+                font-size: 1.5em;
+                margin: 1%;
+            }
+        }
+    }
+}*/
+
+
+
+#login {
+/*    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;*/
+        
+    #main {
+        margin-top: 4rem;
+        margin-bottom: 8rem;
+
+        div {                
+            #form_wrapper {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+                
+                #form {
+                    width: 60%;
+                    #button_login {
+/*                        width: 80%;
+                        font-size: 2em;*/
+                        margin: 1%;
+                    }
+
+                    #button_facebooklogin {
+                        font-size: 1.5em;
+                        margin: 1%;
+                    }
+                }
+            }
+        }
+    }
+}

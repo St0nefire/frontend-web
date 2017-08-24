@@ -1,0 +1,110 @@
+<!--
+<div id="menuindividual" >
+    <div id="header">
+        <div id="left_header">
+            <h1>Menu Paket</h1>
+            <button id="button_tambahmenuindividual" (click)="signalAddButtonClicked()">Tambah menu individual</button>
+        </div>
+    </div>
+    
+    <div id="list_menuindividual">
+        <div class="area_menuindividual" *ngFor="let row of getRowNumber(); let i = index;" 
+             [ngStyle]="((!listMenuIndividual) || i >= listMenuIndividual.length) ? {'visibility': 'hidden'} : {}">
+            <label class="label_namamenu">
+                 {{(listMenuIndividual) && (i < listMenuIndividual.length) ? listMenuIndividual[i].name : '' }}
+            </label>
+             <img class="image_menuindividual" [src]="(listMenuIndividual) && (i < listMenuIndividual.length) ? getImageURL(listMenuIndividual[i].image) : ''">
+             <div class="area_menudetail">
+                 {{(listMenuIndividual) && (i < listMenuIndividual.length) ? listMenuIndividual[i].konten : '' }}
+            </div>
+            <div class="area_lowerimage">
+                <button class="button_edit" (click)="signalEditButtonClicked(listMenuIndividual[i])">
+                    Ubah
+                </button>
+                <button class="button_delete" (click)="deleteMenuIndividual(listMenuIndividual[i])">
+                    Hapus
+                </button>
+            </div>
+        </div>
+    </div>
+ 
+    <div id="pagenumber_area">
+        <label id="label_entries">
+            {{(listMenuIndividual) ? ("Showing " + listMenuIndividual.length + " of " + getTotalMenuIndividual() + 
+                        (getTotalMenuIndividual() > 1 ? " entries " : " entry ")) : ""}}
+        </label>
+        <button [ngStyle]="getStyleFor(-1)" (click)="goToPreviousPage()" >Previous</button>
+        <button [ngStyle]="getStyleFor(0)" *ngIf="arrPageNum[0].value != 0" (click)="goToPage(arrPageNum[0].value)">{{arrPageNum[0].value}}</button>
+        <button [ngStyle]="getStyleFor(1)" *ngIf="arrPageNum[1].value != 0" (click)="goToPage(arrPageNum[1].value)">{{arrPageNum[1].value}}</button>
+        <button [ngStyle]="getStyleFor(2)" *ngIf="arrPageNum[2].value != 0" (click)="goToPage(arrPageNum[2].value)">{{arrPageNum[2].value}}</button>
+        <button [ngStyle]="getStyleFor(3)" *ngIf="arrPageNum[3].value != 0" (click)="goToPage(arrPageNum[3].value)">{{arrPageNum[3].value}}</button>
+        <button [ngStyle]="getStyleFor(4)" *ngIf="arrPageNum[4].value != 0" (click)="goToPage(arrPageNum[4].value)">{{arrPageNum[4].value}}</button>
+        <button [ngStyle]="getStyleFor(3)" (click)="goToNextPage()">Next</button>
+        <button id="button_test" >button_test</button>
+    </div>
+</div>-->
+
+
+<div id="menuindividual" class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <div id="header">
+                <div id="left_header">
+                    <h1>Menu Individual</h1>
+                    <button id="button_tambahmenuindividual" class="btn btn-primary" (click)="signalAddButtonClicked()">
+                         <i class="fa fa-plus-circle align-middle" aria-hidden="true"></i>
+                         <span class="align-middle">Tambah Menu Individual</span>
+                     </button>
+                </div>
+            </div>
+        </div>
+    </div>
+       
+
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <div id="list_menuindividual" class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4 col-xl-4" *ngFor="let row of getRowNumber(); let i = index;">
+                        <div class="card area_menuindividual" [ngStyle]="((!listMenuIndividual) || i >= listMenuIndividual.length) ? {'visibility': 'hidden'} : {}">
+                            <h4 class="card-title">
+                                {{(listMenuIndividual) && (i < listMenuIndividual.length) ? listMenuIndividual[i].name : '' }}
+                            </h4>
+                            <img class="card-img-top" [src]="(listMenuIndividual) && (i < listMenuIndividual.length) ? getImageURL(listMenuIndividual[i].image) : ''">
+                            <div class="card-block" style="overflow-y: true">
+                                <div class="area_menudetail">
+                                    <p class="card-text">
+                                        {{(listMenuIndividual) && (i < listMenuIndividual.length) ? listMenuIndividual[i].konten : '' }}
+                                    </p>
+                                </div>
+                                <button class="btn btn-info" (click)="signalEditButtonClicked(listMenuIndividual[i])">
+                                    <i class="fa fa-pencil-square-o align-middle" aria-hidden="true"></i>
+                                    <span class="align-middle">Ubah</span>
+                               </button>
+                                <button class="btn btn-danger" (click)="deleteMenuIndividual(listMenuIndividual[i])">
+                                     <i class="fa fa-trash-o align-middle" aria-hidden="true"></i>
+                                     <span class="align-middle">Hapus</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <div id="pagenumber_area">
+                <label id="label_entries">
+                    {{(listMenuIndividual) ? ("Showing " + listMenuIndividual.length + " of " + getTotalMenuIndividual() + 
+                                (getTotalMenuIndividual() > 1 ? " entries " : " entry ")) : ""}}
+                </label>
+                <button [ngStyle]="getStyleFor(-1)" (click)="goToPreviousPage()" >Previous</button>
+                <button [ngStyle]="getStyleFor(0)" *ngIf="arrPageNum[0].value != 0" (click)="goToPage(arrPageNum[0].value)">{{arrPageNum[0].value}}</button>
+                <button [ngStyle]="getStyleFor(1)" *ngIf="arrPageNum[1].value != 0" (click)="goToPage(arrPageNum[1].value)">{{arrPageNum[1].value}}</button>
+                <button [ngStyle]="getStyleFor(2)" *ngIf="arrPageNum[2].value != 0" (click)="goToPage(arrPageNum[2].value)">{{arrPageNum[2].value}}</button>
+                <button [ngStyle]="getStyleFor(3)" (click)="goToNextPage()">Next</button>
+            </div>
+        </div>
+    </div>
+</div>

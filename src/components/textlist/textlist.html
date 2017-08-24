@@ -1,0 +1,24 @@
+
+<!--<div id="textlist">
+    <div *ngFor="let obj of _objects">
+        <label>{{obj.name}}</label>
+        <button (click)="removeObject(obj)">x</button>
+    </div>
+</div>-->
+
+
+<div id="textlist" class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <ul class="list-inline" >
+                <li class="list-inline-item" *ngFor="let obj of _objects">
+                    <button class="btn btn-info btn-sm" (click)="removeObject(obj)">
+                        <span class="align-middle" >{{obj.name}}</span>
+                        <i class="fa fa-trash-o align-middle" aria-hidden="true"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+

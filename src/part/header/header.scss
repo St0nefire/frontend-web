@@ -1,0 +1,73 @@
+/*#header {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        background-color: beige;
+        
+        #right_header {
+            display: inline-block;
+            position: relative;
+            margin: 1%;
+            
+            #link_login, #link_register {
+                margin: 1em;
+            }
+            
+            #options {
+                position: absolute;
+                z-index: 11;
+                margin-top: 0px;
+                background: black;
+                
+                label {
+                    margin: 0.5em;
+                    display: block;
+                    color: white;
+                }
+            }
+        }
+    }*/
+
+    #header {
+/*        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        height: 100%;
+        width: 100%;*/
+        background-color: beige;
+        
+        #right_header {
+            display: inline-block;
+            float: right;
+            margin: 1%;
+            
+            #link_login, #link_register {
+                margin: 1em;
+            }
+            
+            #email {
+                .btn-secondary {
+                    background-color: transparent ;
+                    border: none;
+                }
+            }
+            
+            #options {
+                position: absolute;
+                z-index: 11;
+                margin-top: 0px;
+                background: black;
+                
+                label {
+                    margin: 0.5em;
+                    display: block;
+                    color: white;
+                }
+            }
+        }
+    }
+

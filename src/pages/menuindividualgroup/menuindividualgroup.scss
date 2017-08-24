@@ -1,0 +1,27 @@
+/*
+#menuindividualgroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border: 1px solid red;
+    
+    menuindividual {
+        height: 100%;
+        width: 100%;
+    }    
+    
+    addmenuindividual {
+        height: 100%;
+        width: 100%;
+    }
+}*/
+
+
+#menuindividualgroup {
+    .row {
+        margin-top: 2rem;
+    }
+}

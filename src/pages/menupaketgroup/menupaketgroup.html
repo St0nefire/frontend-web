@@ -1,0 +1,31 @@
+
+<!--<div id="menupaketgroup">
+    <menupaket #menuPaket
+                [hidden]="currentView!='menupaket'" 
+                (addButtonClicked)="newMenuPaket()"
+                (editButtonClicked)="editMenuPaket($event)">
+    </menupaket>
+    <addmenupaket #addMenuPaket
+                   [hidden]="currentView!='addmenupaket'" 
+                   (okButtonClicked)="updateMenuPaket($event)"
+                   (cancelButtonClicked)="currentView='menupaket'">
+    </addmenupaket>
+</div>-->
+
+
+<div id="menupaketgroup" class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <menupaket #menuPaket
+                        [hidden]="currentView!='menupaket'" 
+                        (addButtonClicked)="newMenuPaket()"
+                        (editButtonClicked)="editMenuPaket($event)">
+            </menupaket>
+            <addmenupaket #addMenuPaket
+                           [hidden]="currentView!='addmenupaket'" 
+                           (okButtonClicked)="updateMenuPaket($event)"
+                           (cancelButtonClicked)="currentView='menupaket'">
+            </addmenupaket>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,142 @@
+/*
+#addmastermenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border: 1px solid red;
+   
+    #form_main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 1%;
+        width: 80%;
+        height: 100%;
+        
+        #upper_wrapper {
+            width: 100%;
+            text-align: left;
+            
+            h1 {
+                margin-bottom: 1%;
+            }
+            
+            #button_cancel {
+                font-size: 2em;
+                margin: 1%;
+                background-color: graytext;
+                color: white;
+            }
+            margin-bottom: 1%;
+        }
+        
+        #label_menuname, #label_menudetail, #label_menumemo {
+            margin: 1%;
+            width: 95%;
+        }
+
+        #input_menuname, #input_menudetail, #input_menumemo {
+            width: 95%;
+            margin: 1%;
+            height: 3em;
+        }
+        
+        #lower_wrapper {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            #label_image {
+                button {
+                    background-color: turquoise;
+                    color: white;
+                    font-size: 2em;
+                    margin: 1%;
+                }
+            }
+            #input_image {
+                display: none;
+            }
+            #input_fakefile {
+                margin: 1%;
+            }
+            #image_preview {
+                width: 4em;
+                height: 4em;
+                margin: 1%;
+            }
+        }
+        
+        #submit_wrapper {
+            width: 100%;
+            text-align: right;
+            
+            #button_submit {
+                font-size: 2em;
+                background-color: dodgerblue;
+                color: white;
+            }
+        }
+        
+        
+  
+        
+    }        
+}*/
+
+
+#addmastermenu {
+/*    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border: 1px solid red;*/
+
+    #upper_wrapper {
+        width: 100%;
+        text-align: left;
+
+        h1 {
+            margin-bottom: 1%;
+        }
+
+        #button_cancel {
+            margin: 1%;
+        }
+        margin-bottom: 1%;
+    }
+   
+    #form_main{
+        margin: 1%;
+        width: 80%;
+        
+        .form-group {
+            margin-top: 2rem;
+        }
+
+        #inputfile_wrapper {
+            #image_preview {
+                width: 6rem;
+                height: 6rem;
+                margin: 1%;
+            }
+        }
+        
+        #submit_wrapper {
+            width: 100%;
+            text-align: right;
+            
+            #button_submit {
+/*                font-size: 2em;
+                background-color: dodgerblue;
+                color: white;*/
+            }
+        }
+  
+    }        
+}

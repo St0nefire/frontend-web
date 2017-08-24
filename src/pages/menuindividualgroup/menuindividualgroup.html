@@ -1,0 +1,31 @@
+<!--
+<div id="menuindividualgroup">
+    <menuindividual #menuIndividual
+                [hidden]="currentView!='menuindividual'" 
+                (addButtonClicked)="newMenuIndividual()"
+                (editButtonClicked)="editMenuIndividual($event)">
+    </menuindividual>
+    <addmenuindividual #addMenuIndividual
+                   [hidden]="currentView!='addmenuindividual'" 
+                   (okButtonClicked)="updateMenuIndividual($event)"
+                   (cancelButtonClicked)="currentView='menuindividual'">
+    </addmenuindividual>
+</div>-->
+
+
+<div id="menuindividualgroup" class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <menuindividual #menuIndividual
+                        [hidden]="currentView!='menuindividual'" 
+                        (addButtonClicked)="newMenuIndividual()"
+                        (editButtonClicked)="editMenuIndividual($event)">
+            </menuindividual>
+            <addmenuindividual #addMenuIndividual
+                           [hidden]="currentView!='addmenuindividual'" 
+                           (okButtonClicked)="updateMenuIndividual($event)"
+                           (cancelButtonClicked)="currentView='menuindividual'">
+            </addmenuindividual>
+        </div>
+    </div>
+</div>

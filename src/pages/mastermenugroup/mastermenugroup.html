@@ -1,0 +1,30 @@
+
+<!--<div id="mastermenugroup">
+    <mastermenu #masterMenu
+                [hidden]="currentView!='mastermenu'" 
+                (addButtonClicked)="newMasterMenu()"
+                (editButtonClicked)="editMasterMenu($event)">
+    </mastermenu>
+    <addmastermenu #addMasterMenu
+                   [hidden]="currentView!='addmastermenu'" 
+                   (okButtonClicked)="updateMasterMenus($event)"
+                   (cancelButtonClicked)="currentView='mastermenu'">
+    </addmastermenu>
+</div>-->
+
+<div id="mastermenugroup" class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <mastermenu #masterMenu
+                        [hidden]="currentView!='mastermenu'" 
+                        (addButtonClicked)="newMasterMenu()"
+                        (editButtonClicked)="editMasterMenu($event)">
+            </mastermenu>
+            <addmastermenu #addMasterMenu
+                           [hidden]="currentView!='addmastermenu'" 
+                           (okButtonClicked)="updateMasterMenus($event)"
+                           (cancelButtonClicked)="currentView='mastermenu'">
+            </addmastermenu>
+        </div>
+    </div>
+</div>

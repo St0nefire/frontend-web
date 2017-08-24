@@ -1,0 +1,107 @@
+/*
+#autocomplete {
+    width: 100%;
+    height: 90%;                        !!!!! nggak tahu kenapa melebar keluar melulu kalau 100% 
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid black;
+    
+    #wrapper {
+        position: relative;
+        height: 100%;
+        margin-right: 2em;
+        
+        #input_text {
+            margin: 0px;
+            height: 90%;   !!!!! nggak tahu kenapa melebar keluar melulu kalau 100% 
+        }
+
+        #suggestion {
+            position: absolute;
+            background: white;
+            border: 1px dotted red;
+            border-top: none;
+            margin-top: 0px;
+            z-index: 10;
+
+            button {
+                display: block;
+                text-align: left;
+            }
+
+            button:hover {
+                background-color: lightblue;
+            }
+        }
+    }    
+    
+    #tag {
+        background-color: lightblue;
+        margin-right: 0.5em;
+        button {
+            border: none;
+        }
+    }
+}*/
+
+
+#autocomplete {
+/*    width: 100%;
+    height: 90%;                        !!!!! nggak tahu kenapa melebar keluar melulu kalau 100% 
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;*/
+    border: 1px solid black;
+    
+    #wrapper {
+/*        position: relative;
+        height: 100%;
+        margin-right: 2em;*/
+        
+        #input_text {
+/*            margin: 0px;
+            height: 90%;   !!!!! nggak tahu kenapa melebar keluar melulu kalau 100% */
+        }
+
+        #suggestion {
+            position: absolute;
+            background: white;
+            border: 1px dotted red;
+            border-top: none;
+            margin-top: 0px;
+            z-index: 10;
+
+            button {
+                display: block;
+                text-align: left;
+            }
+
+            button:hover {
+                background-color: lightblue;
+            }
+        }
+    }    
+    
+    #tags {
+/*        border: 1px solid blue;
+        padding: 0px;*/
+        
+        ul {
+/*            border: 1px solid green;*/
+            margin: 0px;
+        }
+    }
+    
+    
+    
+/*    #tag {
+        background-color: lightblue;
+        margin-right: 0.5em;
+        button {
+            border: none;
+        }
+    }*/
+}

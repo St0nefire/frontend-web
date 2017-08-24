@@ -1,0 +1,164 @@
+/*
+#menuharian {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    
+    #button_cancel {
+        font-size: 3em;
+        margin: 2%;
+        margin-left: 10%;
+    }
+    
+    table {
+        margin: 1%;
+        width: 96%;
+        
+        td {
+            width: 15%;
+            text-align: center;
+            vertical-align: center;
+            border: 1px solid black;
+            margin: 1%;
+            
+            #column_header {
+                display: inline-block;
+                position: relative;
+                width: 100%;
+                
+                label {
+                    display: inline-block;
+                    float: left;
+                    left: 5%;
+                }
+            
+                #button_add {
+                    float: right;
+                    margin-right: 5%;
+                    background-color: dodgerblue;
+                    color: white;
+                }
+            }
+            
+            div {
+                text-align: center;
+                
+                .button_menu {
+                    margin-bottom: 0.1em;
+                    background-color: paleturquoise;
+                    color: black;
+                }
+            }
+        }
+    }   
+    
+    #lower_area {
+        width: 100%;
+        
+        button {
+            font-size: 2em;
+           float: right; 
+        }
+    }
+}*/
+
+
+#menuharian { 
+    
+    #header {
+        margin-bottom: 2rem;
+        #button_cancel {
+/*            font-size: 2rem;*/
+            margin: 2%;
+            margin-left: 10%;
+        }
+    }
+    
+/*    table {
+        margin: 1%;
+        width: 96%;
+        
+        td {
+            width: 15%;
+            text-align: center;
+            vertical-align: center;
+            border: 1px solid black;
+            margin: 1%;
+            
+            #column_header {
+                display: inline-block;
+                position: relative;
+                width: 100%;
+                
+                label {
+                    display: inline-block;
+                    float: left;
+                    left: 5%;
+                }
+            
+                #button_add {
+                    float: right;
+                    margin-right: 5%;
+                    background-color: dodgerblue;
+                    color: white;
+                }
+            }
+            
+            ul {
+                li {
+                    font-size: 0.7rem;
+                    word-wrap: false;
+                }
+            }
+        }
+    }   */
+
+    .table_main {
+/*        margin: 1%;
+        width: 96%;*/
+        
+        .table_col {
+            border: 1px solid black;
+            #column_header {
+                display: inline-block;
+                position: relative;
+                width: 100%;
+                
+                label {
+                    display: inline-block;
+                    float: left;
+                    left: 5%;
+                }
+            
+                #button_add {
+                    float: right;
+                    margin-right: 5%;
+                }
+            }
+            
+            ul {
+                li {
+                    font-size: 0.7rem;
+                    word-wrap: false;
+                }
+            }
+        }
+    }   
+    
+    #footer {
+        margin-top: 2rem;
+        #button_ok {
+/*            font-size: 2rem;*/
+            float: right; 
+         }
+    }
+    
+/*    #lower_area {
+        width: 100%;
+        
+        button {
+           font-size: 2rem;
+           float: right; 
+        }
+    }*/
+}

@@ -1,0 +1,91 @@
+
+<div id="register">
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <header></header>
+        </div>
+    </div>
+    <form class="row"[hidden]="currentView != 'tenant'" id="registertenant">
+        <div class="col-lg-8 col-xl-8">
+             <div class="form-group">
+                <label id="label_tenantname">Nama Perusahaan<br></label>
+                <input id="input_tenantname" class="form-control" name="tenantName" type="text" placeholder="Nama perusahaan" [(ngModel)]="tenant.name">
+            </div>
+            <div class="form-group">
+                <label id="label_tenantemail">Email <br></label>
+                <input id="input_tenantemail" class="form-control" name="tenantEmail" type="email" placeholder="Email perusahaan" [(ngModel)]="tenant.email">
+            </div>
+            <div class="form-group">
+                <label id="label_tenantpassword">Password <br></label>
+                <input id="input_tenantpassword" class="form-control" name="tenantPassword" type="password" placeholder="Password" [(ngModel)]="tenant.password">
+            </div>
+            <div class="form-group">
+                <label id="label_tenantphone">No. telepon<br></label>
+                <input id="input_tenantphone" class="form-control" name="tenantPhoneNumeber" type="text" placeholder="No. telepon" [(ngModel)]="tenant.phoneNumber">
+            </div>
+             <div class="form-group">
+                <label id="label_description">Deskripsi <br> </label>
+                <textarea rows="5" id="txa_description" class="form-control" name="tenantDeescription" placeholder="Deskripsi perusahaan" [(ngModel)]="tenant.description"></textarea>
+            </div>
+            <div class="form-group" id="tenantInputfile_wrapper">
+                <label class="custom-file">
+                    <input #inputTenantImage type="file" id="file" class="custom-file-input" (change)="tenantFileChange($event)">
+                    <span class="custom-file-control"></span>
+                </label>
+                <img [src]="tenantFileUrl" id="image_tenantpreview">
+            </div>
+            <div id="next_wrapper">
+                <button id="button_next" class="btn btn-secondary" (click)="next()"
+                        [disabled]="!isTenantFormValid()"
+                        [ngStyle]="isTenantFormValid() ? {} : {'background-color': 'lightgray'}">
+                    Next >>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <form [hidden]="currentView != 'user'" id="registeruser" class="row">
+        <div class="col-lg-8 col-xl-8">
+            <div class="form-group">
+                <label id="label_name">Nama <br></label>
+                <input id="input_name" class="form-control" name="name" type="text" placeholder="Nama lengkap anda" [(ngModel)]="user.name">
+            </div>
+            <div class="form-group">
+                <label id="label_email">Email <br></label>
+                <input id="input_email" class="form-control" name="email" type="email" placeholder="Email anda" [(ngModel)]="user.email">
+            </div>
+            <div class="form-group">
+                <label id="label_password">Password <br></label>
+                <input id="input_password" class="form-control" name="password" type="password" placeholder="Password" [(ngModel)]="user.password">
+            </div>
+            <div class="form-group">
+                <label id="label_phone">No. telepon <br></label>
+                <input id="input_phone" class="form-control" name="phoneNumber" type="text" placeholder="No. telepon" [(ngModel)]="user.phoneNumber">
+            </div>
+            <div class="form-group" id="inputfile_wrapper">
+                <label class="custom-file">
+                    <input #inputImage type="file" id="file" class="custom-file-input" (change)="fileChange($event)">
+                    <span class="custom-file-control"></span>
+                </label>
+                <img [src]="fileUrl" id="image_preview">
+            </div>
+            <div id="submit_wrapper">
+                <button id="button_prev" class="btn btn-secondary" (click)="prev()">
+                    << Prev
+                </button>
+                <button id="button_submit" class="btn btn-success" type="submit" (click)="submit()"
+                        [disabled]="!isFormValid()"
+                        [ngStyle]="isFormValid() ? {} : {'background-color': 'lightgray'}">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <footer></footer>
+        </div>
+    </div>
+</div>
+
+

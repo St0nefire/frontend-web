@@ -1,0 +1,43 @@
+<!--
+<div id="autocomplete">
+    <div id="wrapper">
+        <input #inputText size="25"  id="input_text" type="text"  
+               (blur)="focused=false;" 
+               (focus)="onFocus()" 
+               (keyup)="refreshObjects(inputText.value)" > 
+        <div *ngIf="focused" id="suggestion">
+            <button *ngFor="let obj of filteredObjects;" (mousedown)="pickTag(obj)">{{obj.tagName}}</button>
+        </div>
+    </div>
+    <div id="tag" *ngFor="let tag of _tags;">
+        <label> {{tag.tagName + " "}}</label>
+        <button (click)="removeTag(tag)">x</button>
+    </div>
+</div>-->
+
+
+<div id="autocomplete" class="container-fluid">
+    <div class="row" >
+        <div id="wrapper" class="col-lg-3 col-xl-3">
+            <input class="form-control" #inputText size="25"  id="input_text" type="text"  
+                   (blur)="focused=false;" 
+                   (focus)="onFocus()" 
+                   (keyup)="refreshObjects(inputText.value)" > 
+            <div *ngIf="focused" id="suggestion">
+                <button class="btn btn-secondary btn-sm"*ngFor="let obj of filteredObjects;" (mousedown)="pickTag(obj)">{{obj.name}}</button>
+            </div>
+        </div>
+        <div id="tags" class="col-lg-9 col-xl-9">
+            <ul class="list-inline" >
+                    <li class="list-inline-item" *ngFor="let tag of _tags">
+                        <button class="btn btn-info btn-sm" (click)="removeTag(tag)">
+                            <span class="align-middle" >{{tag.name + " "}}</span>
+                            <i class="fa fa-trash-o align-middle" aria-hidden="true"></i>
+                        </button>
+                    </li>
+                </ul>
+        </div>
+    </div>
+</div>
+
+

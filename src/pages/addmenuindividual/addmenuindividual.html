@@ -1,0 +1,80 @@
+
+<div id="addmenuindividual" class="container-fluid">
+    <addmenu #addMenuDlg [show]="showMenu" 
+            (okButtonClicked)="handleAddedMenu($event)"
+            (cancelButtonClicked)="handleCanceledMenu()"
+            [menus]="menus"
+            >
+   </addmenu>
+    <div class="row">
+        <div class=""col-lg-12 col-xl-12>
+            <div id="upper_wrapper">
+                <h1>Tambah menu individual </h1>
+                <button id="button_cancel" class="btn btn-warning" (click)="goBack()"> Kembali </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col=lg-12 col-xl-12">
+            <form id="form_main">
+                <div class="form-group">
+                    <label id="label_menuname">Nama Menu <br></label>
+                    <input #inputName id="input_menuname" class="form-control" name="name" type="text" placeholder="masukan nama menu" [(ngModel)]="menuIndividual.name">
+                </div>
+                <div class="form-group">
+                    <label id="label_menudetail">Detail menu <br></label>
+                    <input id="input_menudetail" class="form-control" name="konten" type="text" placeholder="Isi dengan penjelasan mengenai menu" [(ngModel)]="menuIndividual.konten">
+                </div>
+                <div class="form-group">
+                    <label id="label_menumemo">Memo (jika ada informasi tambahan)<br></label>
+                    <input id="input_menumemo" class="form-control" name="memo" type="text" placeholder="Isi dengan informasi tambahan mengenai menu" [(ngModel)]="menuIndividual.memo">
+                </div>
+                <div class="form-group">
+                    <label id="label_harga">Harga <br></label>
+                    <input id="input_harga" class="form-control" name="price" type="number" placeholder="Rp." [(ngModel)]="menuIndividual.price">
+                </div> <br>
+                <label id="label_tag"> 
+                    Tag
+                </label>
+                <autocomplete #autoComplete [objects]="tagService.masterTagsList ? tagService.masterTagsList : {id: 0, name: 'RETRIEVING DATA, PLEASE WAIT'}" 
+                                            [tags]="menuIndividual.tags">
+            </autocomplete> <br> <br>
+                <label id="label_menu"> 
+                    Menu
+                </label>
+                <div id="menu_list">
+                    <div><button id="btn_addmenu" (click)="addMenu()">Edit Menu</button></div>
+                    <label *ngIf="(!menuIndividual.menus) || (menuIndividual.menus.length <= 0)">---- The list is empty ----</label>
+<!--                    <button id="btn_menu" [disabled]="true" *ngFor="let menu of menus">{{menu.name}}</button>-->
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-info" *ngFor="let miMenu of menuIndividual.menus">
+                            {{miMenu.menu.name}}
+                        </li>
+                    </ul>
+                </div>
+<!--                <div id="lower_wrapper">
+                    <label id="label_image">
+                        <button (click)="inputImage.click()">FILE</button>
+                        <input #inputImage id="input_image" type="file" (change)="fileChange($event)">
+                    </label>
+                    <input #inputFakeFile id="input_fakefile" type="text" [(ngModel)]="fileName">
+                    <img [src]="fileUrl" id="image_preview">
+                </div>-->
+                <div class="form-group" id="inputfile_wrapper">
+                    <label class="custom-file">
+                        <input #inputImage type="file" id="file" class="custom-file-input" (change)="fileChange($event)">
+                        <span class="custom-file-control"></span>
+                    </label>
+                    <img [src]="fileUrl" id="image_preview">
+                </div>
+                <div id="submit_wrapper">
+                    <button id="button_submit" class="btn btn-success" type="submit" (click)="submit()"
+                            [disabled]="!isFormValid()"
+                            [ngStyle]="isFormValid() ? {} : {'background-color': 'lightgray'}">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

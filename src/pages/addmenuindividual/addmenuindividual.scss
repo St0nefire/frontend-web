@@ -1,0 +1,174 @@
+/*
+#addmenuindividual {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+   
+    #form_main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 1%;
+        width: 80%;
+        height: 100%;
+
+        width: 80%;
+        height: 100%;
+        overflow-y: scroll;
+        
+        #upper_wrapper {
+            width: 100%;
+            text-align: left;
+            
+            h1 {
+                margin-bottom: 1%;
+            }
+            
+            #button_cancel {
+                font-size: 2em;
+                background-color: gray;
+                color: white;
+            }
+            margin-bottom: 1%;
+        }
+        
+        #label_menuname, #label_menudetail, #label_menumemo, #label_harga, #label_minorder, #label_tag, #label_menu {
+            margin: 1%;
+            width: 95%;
+        }
+
+        #input_menuname, #input_menudetail, #input_menumemo, #input_harga, #input_minorder, autocomplete {
+            width: 95%;
+            margin: 1%;
+            height: 3em;
+        }
+        
+        autocomplete {
+            display: block;
+        }
+        
+        #menu_list {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 30%;
+            margin: 1%;
+            border: 1px solid black;
+                                    
+            div {
+                width: 100%;
+                button {
+                    float: right;
+                    margin-right: 5%;
+                    background-color: dodgerblue;
+                    color: white;
+                }
+            }
+            
+            label {
+                display: block;
+            }
+            
+            #btn_menu {
+                display: block;
+                background-color: paleturquoise;
+            }
+        }
+        
+        #lower_wrapper {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            #label_image {
+                button {
+                    background-color: turquoise;
+                    color: white;
+                    font-size: 2em;
+                    margin: 1%;
+                }
+            }
+            #input_image {
+                display: none;
+            }
+            #input_fakefile {
+                margin: 1%;
+            }
+            #image_preview {
+                width: 4em;
+                height: 4em;
+                margin: 1%;
+            }
+        }
+        
+        #submit_wrapper {
+            width: 100%;
+            text-align: right;
+            
+            #button_submit {
+                font-size: 2em;
+                background-color: dodgerblue;
+                color: white;
+            }
+        }        
+    }        
+}*/
+
+
+#addmenuindividual {
+/*    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;*/
+
+    #upper_wrapper {            
+        #button_cancel {
+            margin: 1%;
+        }
+        margin-bottom: 1%;
+    }
+   
+    #form_main{
+        margin: 1%;
+        width: 80%;
+        overflow-y: scroll;   
+        
+        .form-group {
+            margin-top: 2rem;
+        }
+        
+        autocomplete {
+            display: block;
+        }
+        
+        #button_addMenu {
+            margin-top: 2rem;
+            font-size: 1.5rem;
+        }
+        
+        #inputfile_wrapper {
+            #image_preview {
+                width: 6rem;
+                height: 6rem;
+                margin: 1%;
+            }
+        }
+        
+        #submit_wrapper {
+            width: 100%;
+            text-align: right;
+            
+            #button_submit {
+/*                font-size: 2rem;
+                background-color: dodgerblue;
+                color: white;*/
+            }
+        }        
+    }         
+}

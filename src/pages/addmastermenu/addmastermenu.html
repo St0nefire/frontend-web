@@ -1,0 +1,98 @@
+<!--
+<div id="addmastermenu">
+    <div id="form_main"> 
+        <div id="upper_wrapper">
+            <h1>Tambah Master Menu </h1>
+            <button id="button_cancel" (click)="cancelButtonClicked.emit()"> Kembali </button>
+        </div>
+        <label id="label_menuname"> 
+            Nama Menu <br>
+            <input id="input_menuname" type="text" placeholder="masukan nama menu" [(ngModel)]="masterMenu.name">
+        </label>
+        <label id="label_menudetail"> 
+            Detail menu <br>
+            <input id="input_menudetail" type="text" placeholder="Isi dengan penjelasan mengenai menu" [(ngModel)]="masterMenu.konten">
+        </label>
+        <label id="label_menumemo"> 
+            Memo (jika ada informasi tambahan) <br>
+            <input id="input_menumemo" type="text" placeholder="Isi dengan informasi tambahan mengenai menu" [(ngModel)]="masterMenu.memo">
+        </label>
+        <div id="lower_wrapper">
+            <label id="label_image">
+                FILE
+                <button (click)="inputImage.click()">FILE</button>
+                <input #inputImage id="input_image" type="file" (change)="fileChange($event)">
+            </label>
+            <input #inputFakeFile id="input_fakefile" type="text" [(ngModel)]="fileName">
+            <img [src]="fileUrl" id="image_preview">
+        </div>
+        <div id="submit_wrapper">
+            <button id="button_submit" (click)="submit()" 
+                    [disabled]="!isFormValid()"
+                    [ngStyle]="isFormValid() ? {} : {'background-color': 'lightgray'}">
+                Submit
+            </button>
+        </div>
+    </div>
+</div>-->
+
+
+<div id="addmastermenu" class="container-fluid" [loading]="isLoading">
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <div id="upper_wrapper">
+                    <h1>Tambah Master Menu </h1>
+<!--                    <button type="button" class="btn btn-info">
+                        <span class="glyphicon glyphicon-search"></span> Search
+                    </button>-->
+                    <button id="button_cancel" class="btn btn-warning" (click)="cancelButtonClicked.emit()"> Kembali </button>
+<!--                    <a class="btn btn-primary" (click)="cancelButtonClicked.emit()">
+                        <i class="fa fa-play align-middle" aria-hidden="true"></i>
+                        <span class="align-middle">Kembali</span>
+                    </a>-->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <form id="form_main">
+                <div class="form-group">
+                    <label id="label_menuname"> 
+                        Nama Menu <br>
+                    </label>
+                    <input id="input_menuname" name="name" class="form-control" type="text" placeholder="masukan nama menu" [(ngModel)]="masterMenu.name">  
+                </div>
+                <div class="form-group">
+                    <label id="label_menudetail"> 
+                        Detail menu <br>
+                    </label>
+                    <input id="input_menudetail" name="konten" class="form-control" type="text" placeholder="Isi dengan penjelasan mengenai menu" [(ngModel)]="masterMenu.konten">
+                </div>
+                <div class="form-group">
+                    <label id="label_menumemo"> 
+                        Memo (jika ada informasi tambahan) <br>
+                    </label>
+                    <input id="input_menumemo" name="memo" class="form-control" type="text" placeholder="Isi dengan informasi tambahan mengenai menu" [(ngModel)]="masterMenu.memo">
+                </div>
+                <div class="form-group" id="inputfile_wrapper">
+                    <label class="custom-file">
+                        <input #inputImage type="file" id="file" class="custom-file-input" (change)="fileChange($event)">
+                        <span class="custom-file-control"></span>
+                    </label>
+                    <img [src]="fileUrl" id="image_preview">
+                </div>
+                <div id="submit_wrapper">
+                    <button id="button_submit" class="btn btn-success" type="submit" (click)="submit()" 
+                            [disabled]="!isFormValid()"
+                            [ngStyle]="isFormValid() ? {} : {'background-color': 'lightgray'}">
+                        Submit
+                    </button>
+
+<!--                    <input type="submit" id="button_submit" class="btn" (click)="submit()" 
+                            [disabled]="!isFormValid()"
+                            [ngStyle]="isFormValid() ? {} : {'background-color': 'lightgray'}">-->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

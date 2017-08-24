@@ -1,0 +1,30 @@
+
+#addmenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /*height: 40%;*/
+    width: 50%;
+    background-color: white;
+    padding: 1em;
+    border: 1px solid black;
+    
+    h1, label, select, div, textlist {
+        margin: 1%;
+    }
+    
+    textlist {
+        width: 96%;
+        height: 2em; 
+    }
+    
+    #lower_area {
+        width: 100%;
+        
+        button {
+            float: right;
+            margin-right: 1em;
+        }
+    }
+}

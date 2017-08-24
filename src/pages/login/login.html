@@ -1,0 +1,55 @@
+<!--
+<div id="login">
+    <header></header>
+    <div id="main">
+        <div id="form">
+            <h2 id="heading">Please Login into Your Account</h2>
+            <input id="input_name" type="text" placeholder="Email" [(ngModel)]="email">
+            <input id="input_password" type="password" placeholder="Password" [(ngModel)]="password">
+            <a id="link_forget" routerLink=""> Forget Password ?</a>
+            <button id="button_login" (click)="login()">Login</button>
+            <label>
+                don't have account ? register <a id="link_login" routerLink="">here</a> <br>
+                or login with <button id="button_facebooklogin">Facebook</button>
+            </label>
+        </div>
+    </div>
+    <footer> </footer>
+</div>-->
+
+
+<div class="container-fluid" id="login">
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <header></header>
+        </div>
+    </div>
+    <div class="row" id="main">
+        <div class="col-lg-12 col-xl-12 text-center center-block" >
+            <div id="form_wrapper">
+                <form id="form">
+                    <h2 id="heading">Please Login into Your Account</h2>
+                    <div class="form-group">
+                        <input id="input_name" name="email" class="form-control" type="text" placeholder="Email" [(ngModel)]="email">
+                    </div>
+                    <div class="form-group">
+                        <input id="input_password" name="password" class="form-control" type="password" placeholder="Password" [(ngModel)]="password">
+                    </div>
+                    <button id="button_login" class="btn btn-lg btn-primary" (click)="login()">Login</button>
+                    <a id="link_forget" routerLink=""> Forget Password ?</a>
+                    <br>
+                    <label>
+                        don't have account ? register <a id="link_login" routerLink="">here</a> <br>
+                        or login with <button id="button_facebooklogin">Facebook</button>
+                    </label>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <footer> </footer>
+        </div>
+    </div>
+    <!--<footer> </footer>-->
+</div>

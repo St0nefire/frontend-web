@@ -1,0 +1,42 @@
+<!--   <div id="header">
+        <div id="right_header">
+            <a id="link_login" [hidden]="email ? true : false" routerLink="/login">Login</a>
+            <label id="label_username" [hidden]=" email ? false : true" (click)="toogleOptionsVisibility($event)">{{email}}</label>
+            <div id="options" [ngStyle]="optionsStyle">
+                <label (click)="logout()">logout</label>
+                <label>profile</label>
+            </div>
+            <a id="link_register" [hidden]="email ? true : false" routerLink="/register">Register</a>
+        </div>
+    </div>-->
+
+    <div class="container-fluid" id="header">
+        <div class="row">
+            <div class="col-lg-12, col-xl-12" >
+                <div id="right_header">
+                    <a id="link_login" [hidden]="email ? true : false" routerLink="/login">
+                       <i class="fa fa-sign-in"></i>
+                       Login
+                    </a>
+<!--                    <label id="label_username" [hidden]=" email ? false : true" (click)="toogleOptionsVisibility($event)">{{email}}</label>
+                    <div id="options" [ngStyle]="optionsStyle">
+                        <label (click)="logout()">logout</label>
+                        <label>profile</label>
+                    </div>-->
+                    <div id="email" class="dropdown" [hidden]=" email ? false : true">
+                        <button id="button_email" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          {{email}}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" (click)="logout()">logout</a>
+                          <a class="dropdown-item">profile</a>
+                        </div>
+                     </div>
+                    <a id="link_register" [hidden]="email ? true : false" routerLink="/register">
+                       <i class="fa fa-user"></i>
+                       Register
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>

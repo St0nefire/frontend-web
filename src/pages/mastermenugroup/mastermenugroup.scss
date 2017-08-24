@@ -1,0 +1,26 @@
+
+/*#mastermenugroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    
+    mastermenu {
+        height: 100%;
+        width: 100%;
+    }    
+    
+    addmastermenu {
+        height: 100%;
+        width: 100%;
+    }
+}*/
+
+#mastermenugroup {    
+    .row {
+        margin-top: 2rem;
+        /*border: 1px solid red;*/
+    }
+}

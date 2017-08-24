@@ -1,0 +1,304 @@
+/*
+
+#register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+    
+    header, footer {
+        width: 100%
+    }
+    
+    #registertenant{
+        width: 80%;
+        height: 80%;
+        margin-top: 2rem;
+        overflow-y: scroll;
+
+        #label_tenantname, #label_tenantemail, #label_tenantpassword, #label_tenantphone, #label_description {
+            margin: 1%;
+            width: 95%;
+        }
+
+        #input_tenantname, #input_tenantpassword, #input_tenantemail, #input_tenantphone {
+            width: 95%;
+            margin: 1%;
+            height: 3em;
+        }
+        
+        #txa_description {
+            width: 95%;
+            margin: 1%;
+        }
+
+        #tenant_lowerwrapper {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            #label_tenantimage {
+                button {
+                    background-color: turquoise;
+                    color: white;
+                    font-size: 2em;
+                    margin: 1%;
+                }
+                
+                border: 1px dotted red;
+            }
+            #input_tenantimage {
+                display: none;
+            }
+            #input_tenantfakefile {
+                margin: 1%;
+            }
+            #image_tenantpreview {
+                width: 4em;
+                height: 4em;
+                margin: 1%;
+            }
+        }
+
+        #next_wrapper {
+            width: 100%;
+            text-align: right;
+
+            #button_next {
+                font-size: 2em;
+                background-color: dodgerblue;
+                color: white;
+            }
+        }        
+    }  
+    
+    #registeruser{
+        width: 80%;
+        height: 80%;
+        overflow-y: scroll;
+
+        #label_name, #label_email, #label_password, #label_phone {
+            margin: 1%;
+            width: 95%;
+        }
+
+        #input_name, #input_password, #input_email, #input_phone {
+            width: 95%;
+            margin: 1%;
+            height: 3em;
+        }
+
+        #lower_wrapper {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            #label_image {
+                button {
+                    background-color: turquoise;
+                    color: white;
+                    font-size: 2em;
+                    margin: 1%;
+                }
+            }
+            #input_image {
+                display: none;
+            }
+            #input_fakefile {
+                margin: 1%;
+            }
+            #image_preview {
+                width: 4em;
+                height: 4em;
+                margin: 1%;
+            }
+        }
+
+        #submit_wrapper {
+            width: 100%;
+            text-align: right;
+
+            #button_prev {
+                float: left;
+                font-size: 2em;
+                background-color: dodgerblue;
+                color: white;
+            }
+
+            #button_submit {
+                float: right;
+                font-size: 2em;
+                background-color: dodgerblue;
+                color: white;
+            }
+        }        
+    }  
+}*/
+
+
+
+#register {
+/*    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;*/
+    
+/*    header, footer {
+        width: 100%
+    }*/
+
+    .row {
+        margin-top: 2rem;
+    }
+    
+    #registertenant{
+/*        width: 80%;
+        height: 80%;
+        margin-top: 2rem;*/
+        /*overflow-y: scroll;*/
+
+/*        #label_tenantname, #label_tenantemail, #label_tenantpassword, #label_tenantphone, #label_description {
+            margin: 1%;
+            width: 95%;
+        }
+
+        #input_tenantname, #input_tenantpassword, #input_tenantemail, #input_tenantphone {
+            width: 95%;
+            margin: 1%;
+            height: 3em;
+        }*/
+
+        .form-group {
+            margin-top: 2rem;
+        }
+        
+/*        #txa_description {
+            width: 95%;
+            margin: 1%;
+        }*/
+
+/*        #tenant_lowerwrapper {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            #label_tenantimage {
+                button {
+                    background-color: turquoise;
+                    color: white;
+                    font-size: 2em;
+                    margin: 1%;
+                }
+                
+                border: 1px dotted red;
+            }
+            #input_tenantimage {
+                display: none;
+            }
+            #input_tenantfakefile {
+                margin: 1%;
+            }
+            #image_tenantpreview {
+                width: 4em;
+                height: 4em;
+                margin: 1%;
+            }
+        }*/
+
+        #tenantInputfile_wrapper {
+            #image_tenantpreview {
+                width: 6rem;
+                height: 6rem;
+                margin: 1%;
+            }
+        }
+
+        #next_wrapper {
+            width: 100%;
+            text-align: right;
+
+            #button_next {
+/*                font-size: 2em;
+                background-color: dodgerblue;
+                color: white;*/
+            }
+        }        
+    }  
+    
+    #registeruser{
+/*        width: 80%;
+        height: 80%;
+        overflow-y: scroll;*/
+
+/*        #label_name, #label_email, #label_password, #label_phone {
+            margin: 1%;
+            width: 95%;
+        }
+
+        #input_name, #input_password, #input_email, #input_phone {
+            width: 95%;
+            margin: 1%;
+            height: 3em;
+        }*/
+
+        .form-group {
+            margin-top: 2rem;
+        }
+
+/*        #lower_wrapper {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            #label_image {
+                button {
+                    background-color: turquoise;
+                    color: white;
+                    font-size: 2em;
+                    margin: 1%;
+                }
+            }
+            #input_image {
+                display: none;
+            }
+            #input_fakefile {
+                margin: 1%;
+            }
+            #image_preview {
+                width: 4em;
+                height: 4em;
+                margin: 1%;
+            }
+        }*/
+
+        #inputfile_wrapper {
+            #image_preview {
+                width: 6rem;
+                height: 6rem;
+                margin: 1%;
+            }
+        }
+
+        #submit_wrapper {
+            width: 100%;
+/*            text-align: right;*/
+
+            #button_prev {
+                float: left;
+/*                font-size: 2em;
+                background-color: dodgerblue;
+                color: white;*/
+            }
+
+            #button_submit {
+                float: right;
+/*                font-size: 2em;
+                background-color: dodgerblue;
+                color: white;*/
+            }
+        }        
+    }  
+}
+

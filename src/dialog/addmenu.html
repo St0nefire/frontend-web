@@ -1,0 +1,15 @@
+
+<div [ngStyle]="getStyle()" #addMenu id="addmenu">
+    <h1>Pilih Menu</h1>
+    <label> Pilih menu untuk tanggal: {{date}}</label>
+    <label>Menu</label>
+    <!--nggak bisa dipassing objek langsung-->
+    <select (change)="addObject($event.target.value)">
+        <option *ngFor="let m of mmService.mmList" [value]="m.id" >{{m}}</option>
+    </select>
+    <textlist #textList [objects]="_menus"></textlist>
+    <div id="lower_area">
+        <button id="button_ok" class="btn btn-success" (click)="signalOkButtonClicked()">OK</button>
+        <button id="button_cancel" class="btn btn-warning" (click)="signalCancelButtonClicked()">CANCEL</button>
+    </div>
+</div>

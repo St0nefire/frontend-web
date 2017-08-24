@@ -1,0 +1,25 @@
+
+/*#menupaketgroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    
+    menupaket {
+        height: 100%;
+        width: 100%;
+    }    
+    
+    addmenupaket {
+        height: 100%;
+        width: 100%;
+    }
+}*/
+
+#menupaketgroup {
+    .row {
+        margin-top: 2rem;
+    }
+}

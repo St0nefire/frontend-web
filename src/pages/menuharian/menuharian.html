@@ -1,0 +1,80 @@
+<!--
+<div id="menuharian" >  
+    <button id="button_cancel" (click)="signalCancelButtonClicked()">KEMBALI</button>
+    <addmenu #addMenuDlg [show]="showMenu" 
+             [date]="menuDate"
+             (okButtonClicked)="handleAddedMenu($event)"
+             (cancelButtonClicked)="handleCanceledMenu()"
+             [menus]="currentMenus"
+             >
+    </addmenu>
+    <table>
+        <tr *ngFor="let rows of table">
+            <td *ngFor="let col of rows">
+                <div id="column_header">
+                    <label>{{col.date}}</label>
+                    <button id="button_add" (click)="addMenu(col.date)">Edit</button>
+                </div>
+                <div *ngFor="let menu of col.menus"><button class="button_menu" [disabled]="true" ><b>{{menu.name}}</b></button></div>
+            </td>
+        </tr>
+    </table>
+    <div id="lower_area">
+        <button id="button_ok" (click)="signalOkButtonClicked()">Ok</button>
+    </div>
+</div>-->
+
+
+<div id="menuharian" class="container-fluid">  
+    <addmenu #addMenuDlg [show]="showMenu" 
+            [date]="menuDate"
+            (okButtonClicked)="handleAddedMenu($event)"
+            (cancelButtonClicked)="handleCanceledMenu()"
+            [menus]="currentMenus"
+            >
+    </addmenu>
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+<!--            <table>
+                <tr *ngFor="let rows of table">
+                    <td *ngFor="let col of rows">
+                        <div id="column_header">
+                            <label>{{col.date}}</label>
+                            <button id="button_add" class="btn btn-info btn-sm" (click)="addMenu(col.date)">Edit</button>
+                        </div>
+                        <div *ngFor="let menu of col.menus"><button class="button_menu" [disabled]="true" ><b>{{menu.name}}</b></button></div>
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-info" *ngFor="let menu of col.menus">
+                                {{menu.name}}
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>-->
+            <div id="header" class="row">
+                <div class="col-lg-12 col-xl-12">
+                    <button id="button_cancel" class="btn btn-warning" (click)="signalCancelButtonClicked()">KEMBALI</button>
+                </div>
+            </div>
+            <div class="table_main row" *ngFor="let rows of table">
+                <div class="col-lg-2 col-xl-2 table_col" *ngFor="let col of rows">
+                    <div id="column_header">
+                            <label>{{col.date}}</label>
+                            <button id="button_add" class="btn btn-info btn-sm" (click)="addMenu(col.date)">Edit</button>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-info" *ngFor="let menu of col.menus">
+                            {{menu.name}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="footer" class="row">
+                <div id="lower_area" class="col-lg-12 col-xl-12">
+                    <button id="button_ok" class="btn btn-success" (click)="signalOkButtonClicked()">Ok</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
