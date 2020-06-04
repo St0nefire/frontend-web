@@ -34,7 +34,7 @@ export class PagerPage {
             this.arrPageNum[i].value = 0;
         }
         
-        if (menuArray) {
+        if (menuArray && menuArray.length > 0) {
             this.arrAllObjects = [];
             var arrObjects ;
             var i;
@@ -170,7 +170,6 @@ export class PagerPage {
                 return {"visibility": "hidden"}
         }
         else if (index == this.pageTotal) {
-//            console.log("ARR LENGTH: " + this.arrAllObjects.length + " CPN: " + this.currentPageNum );
             if (!((this.arrAllObjects.length - this.currentPageNum) > 0))
                 return {"visibility": "hidden"};
         }
@@ -179,7 +178,7 @@ export class PagerPage {
                 return {"background-color": "blue", "color": "white"}
             }
             else
-                return {"background-color": "initial", "color": "initial"}
+                return {"background-color": "white", "color": "black"}
         }
     }
  }

@@ -12,8 +12,26 @@ import { Router } from '@angular/router';
 export class RegisterPage {
     
     constructor(private router: Router, private utilService: UtilService, private credService: CredService) {
+        let obs = this.utilService.getProvinces();
+        this.isLoading = true;
+        obs.subscribe(
+            data => {
+                this.provincesList = data.provincesList;
+                this.province = this.returnProvince(this.provincesList[0].name);
+                this.tenant.province = this.provincesList[0].name;
+                this.utilService.printObject("Province: ", this.province);
+            },
+            error => {
+                this.isError = true; 
+            },
+            () => {
+                this.isLoading = false;
+            }
+        )
     }
     
+    provincesList: any[] = null;
+    province: any = null;
     currentView = "tenant";
     fileName: string = "";
     fileUrl: string = "";
@@ -22,12 +40,14 @@ export class RegisterPage {
     image: File = null;
     tenantImage: File = null;
     user: any = {name: "", email: "", password: "", phoneNumber: "", profilePicture: ""};
-    tenant: any = {name: "", email: "", password: "", phoneNumber: "", profilePicture: "", description: ""};
+    tenant: any = {name: "", email: "", password: "", phoneNumber: "", profilePicture: "", description: "", province: null, regency: null, address: ""};
     formData:FormData ;
     headerTitle: string = "Pendaftaran step 1";
+    isLoading: boolean = false;
+    isError: boolean = false;
     
-    @ViewChild("inputFakeFile") inputFakeFile: any;
-    @ViewChild("inputTenantFakeFile") inputTenantFakeFile: any;
+    @ViewChild("cmbProvince") cmbProvince: any;
+    @ViewChild("cmbRegency") cmbRegency: any;
     
     @Output()
     cancelButtonClicked: EventEmitter<any> = new EventEmitter<any>();
@@ -37,6 +57,7 @@ export class RegisterPage {
     
             
     next() {
+        this.utilService.printObject("T: " , this.tenant);
         this.headerTitle = "Pendaftaran Step 2";
         this.currentView = "user";
     }
@@ -95,8 +116,22 @@ export class RegisterPage {
     }
     
     isTenantFormValid() {
-        return this.tenant.name && this.tenant.email && this.tenant.password && this.tenant.phoneNumber && 
-            this.tenant.profilePicture;
+        return this.tenant.name && this.tenant.email && this.tenant.password && this.tenant.phoneNumber && this.tenant.province && this.tenant.regency &&
+            this.tenant.address && this.tenant.profilePicture;
+    }
+    
+    returnProvince(name) {
+        for (var i = 0; i < this.provincesList.length; i++) {
+            if (this.provincesList[i].name == name)
+                return this.provincesList[i];
+        }
+    }
+    
+    changeProvince(id) {
+        this.province = this.returnProvince(id);
+        if (this.province.regencies && this.province.regencies.length > 0)
+            this.tenant.regency = this.province.regencies[0].name;
+        this.utilService.printObject("PR: ", this.province);
     }
     
     submit() {
@@ -104,20 +139,28 @@ export class RegisterPage {
 //        this.utilService.printObject("TENANT: ", this.tenant);
 
         let obs = this.credService.registerUser(this.user, this.tenant, this.tenantImage, this.image);
-            
-        obs.subscribe(
-            data => {
-                if(data.errorMessage) {
-                    alert("ERROR RESPONSE: " + data.errorMessage);
-                    return;
+        this.isLoading = true;
+        setTimeout(() => {    
+            obs.subscribe(
+                data => {
+                    if(data.errorMessage) {
+                        alert("ERROR RESPONSE: " + data.errorMessage);
+                        return;
+                    }
+                    alert("REGISTERED SUCCESSFULLY");
+                    this.isLoading = false;
+                    // tunda navigasi sampai method ini beres agar loadingnya mati, karena loadingnya didetek mati setelah methiod beres
+                    setTimeout(() => this.router.navigate(["/login"]), 1000);
+                },
+                error => {
+                    alert("ERROR: " + error);
+                },
+                () => {
+                    console.log("finally is called")
+                    this.isLoading = false;
                 }
-                alert("REGISTERED SUCCESSFULLY");
-                this.router.navigate(["/login"]);
-            },
-            error => {
-                alert("ERROR: " + error);
-            }
-        )
+            )
+        }, 1500);
     }
         
 }

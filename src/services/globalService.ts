@@ -4,6 +4,7 @@ import { Http, Headers, RequestOptions, Response, URLSearchParams } from '@angul
 import { MasterMenuService  } from './mastermenuservice';
 import { MenuIndividualService  } from './menuindividualservice';
 import { ScheduledPackageService  } from './scheduledpackageservice';
+import { TenantService  } from './tenantservice';
 import { CredService  } from './credservice';
 import { TagService  } from './tagservice';
 import { UtilService  } from './utilservice';
@@ -16,6 +17,7 @@ export class GlobalService {
         
     constructor(private utilService: UtilService, 
                 private credService: CredService, 
+                private tenantService: TenantService,
                 private tagService: TagService,
                 private mmService: MasterMenuService,
                 private miService: MenuIndividualService, 
@@ -27,5 +29,7 @@ export class GlobalService {
         this.mmService.reset();
         this.miService.reset();
         this.spService.reset();
+        this.tagService.reset();
+        this.tenantService.reset();
     }
 }

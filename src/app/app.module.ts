@@ -20,11 +20,12 @@ import { MenuIndividual } from '../pages/menuindividual/menuindividual';
 import { AddMenuIndividual } from '../pages/addmenuindividual/addmenuindividual';
 import { MenuHarian } from '../pages/menuharian/menuharian';
 import { RegisterPage } from '../pages/register/register';
-
+import { TenantsPage } from '../pages/tenants/tenants';
 import { FooterPart } from '../part/footer/footer';
 import { HeaderPart } from '../part/header/header';
 
 import { CredService } from '../services/credservice' ;
+import { TenantService } from '../services/tenantservice' ;
 import { MasterMenuService } from '../services/mastermenuservice' ;
 import { ScheduledPackageService } from '../services/scheduledpackageservice' ;
 import { MenuIndividualService } from '../services/menuindividualservice' ;
@@ -64,6 +65,7 @@ import {routes} from './route';
     AddMenuIndividual,
     MenuHarian,
     RegisterPage,
+    TenantsPage,
     
     FooterPart,
     HeaderPart,
@@ -85,6 +87,7 @@ import {routes} from './route';
   ],
   providers: 
   [ CredService, 
+    TenantService,
     MasterMenuService, 
     ScheduledPackageService, 
     MenuIndividualService, 

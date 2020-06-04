@@ -5,13 +5,16 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { UtilService } from './utilservice';
+import { TenantService } from './tenantservice';
 import {configUrl} from '../config/config';
 
 
 @Injectable()
 export class CredService {
     
-    constructor(private utilService: UtilService, private http: Http) {}
+    constructor(private utilService: UtilService, private tenantService: TenantService) {}
+    
+    public user: any = {};
 
     public email: string;
     public name: string;
@@ -22,12 +25,20 @@ export class CredService {
         this.name = null;
         this.sessionString = null;
     }
+    
+    
 
     public login( email: string, password: string) {
         let url = configUrl.loginUrl;
         return this.utilService.postRequest(url, {"email": email, "password": password})
                         .map(
                             obj => {
+                                    this.user.email = obj.email; 
+                                    this.user.name = obj.name;
+                                    this.user.sessionString = obj.sessionString;
+                                    this.user.tenant = obj.tenant;
+                                    this.tenantService.setCurrentTenant(this.user.tenant);
+                                    
                                     this.email = obj.email; 
                                     this.name = obj.name;
                                     this.sessionString = obj.sessionString;
@@ -40,6 +51,7 @@ export class CredService {
         return this.utilService.postRequest(url, {"sessionString": this.sessionString})
                                .map(
                                     obj => {
+                                        this.user = {};
                                         this.email = null;
                                         this.name = null;
                                         this.sessionString = null;
@@ -47,9 +59,13 @@ export class CredService {
                                     }
                                )
     }
-    
+        
     public getImageURL(image: string) {
         return 'http://192.168.1.13:8080/stonefire/resource/image?sessionString=' + this.sessionString + '&image=' + image;
+    }
+    
+    public getTenantImageURL(tenantId: string, image: string) {
+        return 'http://192.168.1.13:8080/stonefire/resource/image?tenantId=' + tenantId + '&image=' + image;
     }
     
     registerUser(user: any, tenant: any, tenantImage: File, image: File) {
@@ -65,13 +81,16 @@ export class CredService {
         formData.append("tenantEmail", tenant.email);
         formData.append("tenantPassword", tenant.password);
         formData.append("tenantPhoneNumber", tenant.phoneNumber);
-//        formData.append("tenantProflePicture", tenant.profilePicture);
+        formData.append("tenantProvince", tenant.province);
+        formData.append("tenantRegency", tenant.regency);
+        formData.append("tenantAddress", tenant.address);
+        formData.append("tenantProflePicture", tenantImage);
         formData.append("description", tenant.description);
         formData.append("name", user.name);
         formData.append("email", user.email);
         formData.append("password", user.password);
         formData.append("phoneNumber", user.phoneNumber);
-//        formData.append("profilepicture", user.profilePicture);
+        formData.append("profilepicture", image);
         return this.utilService.postRequestWithForm(url, formData);
     }
     
@@ -79,25 +98,5 @@ export class CredService {
         this.email = null;
         this.name = null;
         this.sessionString = null;
-    }
-
-
-    private extractData(res: Response) {
-        let retval = null ;
-        if(res)
-                retval = res.json();
-         return retval;
-    }
-
-    private handleError (error: Response | any) {
-        let errMsg: string;
-        if (error instanceof Response) {
-          const body = error.json() || '';
-          const err = body.error || JSON.stringify(body);
-          errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-        } else {
-          errMsg = error.message ? error.message : error.toString();
-        }
-        return Observable.throw(errMsg);
     }
 }

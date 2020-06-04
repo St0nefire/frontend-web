@@ -1,8 +1,11 @@
 
-<div id="register">
+<div id="register" [loading]="isLoading">
     <div class="row">
         <div class="col-lg-12 col-xl-12">
             <header></header>
+            <div id="alert_error" class="alert alert-danger" role="alert" [hidden]="!isError">
+                <strong>Error ketika mengambil data.</strong> Silakan periksa koneksi atau coba lagi beberapa saat
+            </div>
         </div>
     </div>
     <div class="row">
@@ -10,26 +13,42 @@
             <h1>{{headerTitle}} </h1>
         </div>
     </div>
-    <form class="row"[hidden]="currentView != 'tenant'" id="registertenant">
+    <form *ngIf="!isError" class="row"[hidden]="currentView != 'tenant'" id="registertenant">
         <div class="col-lg-8 col-xl-8">
              <div class="form-group">
-                <label id="label_tenantname">Nama Perusahaan<br></label>
-                <input id="input_tenantname" class="form-control" name="tenantName" type="text" placeholder="Nama perusahaan" [(ngModel)]="tenant.name">
+                <label id="label_tenantname">Masukan nama organisasi yang hendak mendaftar<br></label>
+                <input id="input_tenantname" class="form-control" name="tenantName" type="text" placeholder="Nama organisasi" [(ngModel)]="tenant.name">
             </div>
             <div class="form-group">
-                <label id="label_tenantemail">Email <br></label>
-                <input id="input_tenantemail" class="form-control" name="tenantEmail" type="email" placeholder="Email perusahaan" [(ngModel)]="tenant.email">
+                <label id="label_tenantemail">Masukan alamat email organisasi <br></label>
+                <input id="input_tenantemail" class="form-control" name="tenantEmail" type="email" placeholder="Email organisasi" [(ngModel)]="tenant.email">
             </div>
             <div class="form-group">
-                <label id="label_tenantpassword">Password <br></label>
+                <label id="label_tenantpassword">Password untuk organisasi<br></label>
                 <input id="input_tenantpassword" class="form-control" name="tenantPassword" type="password" placeholder="Password" [(ngModel)]="tenant.password">
             </div>
             <div class="form-group">
-                <label id="label_tenantphone">No. telepon<br></label>
+                <label id="label_tenantphone">No. telepon organisasi yang bisa dihubungi</label> 
                 <input id="input_tenantphone" class="form-control" name="tenantPhoneNumeber" type="text" placeholder="No. telepon" [(ngModel)]="tenant.phoneNumber">
             </div>
+            <div class="form-group">
+                <label id="label_province">Provinsi</label>
+                <select #cmbProvince (change)="changeProvince($event.target.value)" class="form-control" name="tenantProvince" [(ngModel)]="tenant.province">
+                    <option *ngFor="let p of utilService.provincesList" [value]="p.name" >{{p.name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label id="label_regency">Kota</label><br>
+                <select #cmbRegency *ngIf="province" class="form-control" name="tenantRegency" [(ngModel)]="tenant.regency">
+                    <option *ngFor="let r of province.regencies" [value]="r.name" >{{r.name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label id="label_tenantAddress">Alamat organisasi</label>
+                <input id="input_tenantAddress" class="form-control" name="tenantAddress" type="text" placeholder="Masukan alamat (jalan) perusahaan" [(ngModel)]="tenant.address">
+            </div>
              <div class="form-group">
-                <label id="label_description">Deskripsi <br> </label>
+                <label id="label_description">Deskripsi singkat organisasi <br> </label>
                 <textarea rows="5" id="txa_description" class="form-control" name="tenantDeescription" placeholder="Deskripsi perusahaan" [(ngModel)]="tenant.description"></textarea>
             </div>
             <div class="form-group" id="tenantInputfile_wrapper">
@@ -52,19 +71,19 @@
     <form [hidden]="currentView != 'user'" id="registeruser" class="row">
         <div class="col-lg-8 col-xl-8">
             <div class="form-group">
-                <label id="label_name">Nama <br></label>
+                <label id="label_name">Masukan nama legkap anda <br></label>
                 <input id="input_name" class="form-control" name="name" type="text" placeholder="Nama lengkap anda" [(ngModel)]="user.name">
             </div>
             <div class="form-group">
-                <label id="label_email">Email <br></label>
+                <label id="label_email">Masukan alamat email anda <br></label>
                 <input id="input_email" class="form-control" name="email" type="email" placeholder="Email anda" [(ngModel)]="user.email">
             </div>
             <div class="form-group">
-                <label id="label_password">Password <br></label>
+                <label id="label_password">Password untuk akun anda <br></label>
                 <input id="input_password" class="form-control" name="password" type="password" placeholder="Password" [(ngModel)]="user.password">
             </div>
             <div class="form-group">
-                <label id="label_phone">No. telepon <br></label>
+                <label id="label_phone">No. telepon anda yang bisa dihubungi <br></label>
                 <input id="input_phone" class="form-control" name="phoneNumber" type="text" placeholder="No. telepon" [(ngModel)]="user.phoneNumber">
             </div>
             <div class="form-group" id="inputfile_wrapper">

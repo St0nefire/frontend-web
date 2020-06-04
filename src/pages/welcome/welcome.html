@@ -45,18 +45,18 @@
                         <input class="form-control" id="input_cari" type="text"><br>-->
                         <div class="input-group form-group">
                             <span class="input-group-addon"><i class="fa fa-map-marker fa-fw"></i></span>
-                            <input class="form-control" id="input_lokasi" type="text">
+                            <input class="form-control" id="input_lokasi" type="text" name="location" [(ngModel)]="location">
                         </div>
                         <div class="input-group form-group">
                             <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
-                            <input class="form-control" id="input_cari" type="text">
+                            <input class="form-control" id="input_cari" type="text" name="tenant" [(ngModel)]="tenant">
                         </div>
 <!--                        <div class="input-field">
                             <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
                             <input class="form-control" type="password" placeholder="Password">
                         </div>-->
                         <div id="search_wrapper">
-                            <button id="button_cari" class="btn btn-lg btn-info">Cari</button>
+                            <button id="button_cari" type="button" class="btn btn-lg btn-info" (click)="goToTenantsPage()">Cari</button>
                         </div>
                     </form>
                 </div>

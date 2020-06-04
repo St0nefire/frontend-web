@@ -1,0 +1,74 @@
+
+#tenants {
+    background-color: lightsteelblue;
+    
+    #button_back {
+        margin-bottom: 1rem;
+    }
+    
+    #main_content {
+        .object {
+            background-color: white;
+            cursor: pointer;
+            
+            .btn_menu {
+                margin-top: 0.5rem;
+            }
+        }
+        
+        .row {
+            margin-top: 1rem;
+        }
+        
+        .profile_picture, .image_menu {
+            height: 5rem;
+            width: 5rem;
+            margin: 0.2rem;
+        } 
+    }
+   
+    
+    #search_area {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    
+        #form_wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            #form_search {
+
+                input {
+                    border: none;
+                }
+
+                .input-group {
+                    border: 1px solid grey;
+                    background-color: white;
+                }
+
+                .input-group-addon {
+                    background-color: transparent;
+                    border: none;
+                }
+            }
+
+            .form-group {
+                margin-right: 1rem;
+            }
+        }
+    }
+    
+       
+    
+/*    #pagenumber_area {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin: 1%;
+        margin-right: 3em;
+    }*/
+}
+

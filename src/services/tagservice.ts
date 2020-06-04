@@ -14,20 +14,6 @@ export class TagService {
    loaded: boolean = false;
 
     constructor(private http: Http, private credService: CredService, private utilService: UtilService) {
-//        this.getTags().subscribe(
-//            data => {
-//                this.loaded = true;
-//                
-//                if(data.errorMessage) {
-//                    alert("ERROR RESPONSE: " + data.errorMessage);
-//                    return;
-//                }
-//                this.masterTagsList = data.masterTagsList;
-//            },
-//            error => {
-//                alert("ERROR: " + error);
-//            }
-//        );
     }
     
     public reset() {
@@ -68,25 +54,4 @@ export class TagService {
                 }
             )
     }
-    
-    
-    private extractData(res: Response) {
-        let retval = null ;
-        if(res)
-                retval = res.json();
-         return retval;
-    }
-
-    private handleError (error: Response | any) {
-        let errMsg: string;
-        if (error instanceof Response) {
-          const body = error.json() || '';
-          const err = body.error || JSON.stringify(body);
-          errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-        } else {
-          errMsg = error.message ? error.message : error.toString();
-        }
-        return Observable.throw(errMsg);
-    }
-
 }

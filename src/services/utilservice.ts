@@ -13,6 +13,7 @@ export class UtilService {
     postOptions: RequestOptions = null;
     iDiv: HTMLDivElement = null;
     child: any = null;
+    provincesList: any[] = null;
         
     constructor(private http: Http) {
         this.headers = new Headers({ 'Content-Type': 'application/json', 'Accept': 'application/json' });
@@ -32,6 +33,19 @@ export class UtilService {
         this.iDiv.style.zIndex = "1000";
     }
         
+    public reset() {
+        this.provincesList = null;
+    }
+    
+    public getProvinces() {
+        let url = 'http://192.168.1.13:8080/stonefire/resource/provinces';        
+        return this.getRequest(url, null)
+                   .map(data => {
+                       this.provincesList = data.provincesList;
+                       return data;
+                    })
+    }
+    
     public getRequest(url: string, params: URLSearchParams) {
         let requestOptions = new RequestOptions();
         requestOptions.params = params;
@@ -105,14 +119,22 @@ export class UtilService {
     public printObject(text: string, obj: any) {
         console.log(text + JSON.stringify(obj, undefined, 4));
     }
+    
+    public setBackgroundColor(color: string) {
+        document.body.style.backgroundColor = color;
+    }
         
     
     private extractData(res: Response) {
         let retval = null ;
-        if (res && res.ok)
-                retval = res.json();
-        else
+        if (res && res.ok) {
+            retval = res.json();
+            if(retval.errorMessage)
+                throw retval.errorMessage;
+        }
+        else {
             Observable.throw(res);
+        }
         
         return retval;
     }
@@ -128,4 +150,6 @@ export class UtilService {
         }
         return Observable.throw(errMsg);
     }
+    
+    
 }

@@ -1,0 +1,124 @@
+
+<div id="tenants" class="container-fluid" [loading]="isLoading()"> 
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <header></header>
+            <div id="alert_error" class="alert alert-danger" role="alert" [hidden]="!isError">
+                <strong>Error ketika mengambil data.</strong> Silakan periksa koneksi atau coba lagi beberapa saat
+            </div>
+        </div>
+    </div>
+    <div id="search_area" class="row">
+        <div class="col-lg-12 col-xl-12 text-center mx-auto">
+            <div id="form_wrapper">
+                <form id="form_search" class="form-inline text-center mx-auto">
+                    <div class="input-group form-group">
+                        <span class="input-group-addon"><i class="fa fa-map-marker fa-fw"></i></span>
+                        <input class="form-control" id="input_lokasi" type="text">
+                    </div>
+                    <div class="input-group form-group">
+                        <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+                        <input class="form-control" id="input_cari" type="text">
+                    </div>
+                    <button class="btn btn-info">Cari</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row" *ngIf="!isError">
+        <div class="col-lg-3 col-xl-3"> 
+        </div>
+        
+        <div id="main_content" class="col-lg-6 col-xl-6"> 
+            <div class="row">
+                <div class="col-lg-12 col-xl-12 text-center mx-auto">
+                    <label id="label_entries">
+                        <b> {{(getTotalObjectsInCurrentPage() > 0) ? ("Showing " + getTotalObjectsInCurrentPage() + " of " + getTotalObjects() + 
+                                    (getTotalObjects() > 1 ? " entries " : " entry ")) : ""}} </b>
+                    </label>
+                </div>
+            </div>
+            
+            <div *ngIf="mainView == 'tenantlist'" id="tenant_list" class="row">
+                <div class="col-lg-12 col-xl-12">
+                    <div class="row object" *ngFor="let tenant of listObjects"> 
+                         <div class="col-lg-2 col-xl-2 align-self-center" >
+                            <img class="profile_picture" [src]="getTenantImageURL(tenant.id, tenant.profilePicture)">
+                        </div>
+                        <div class="col-lg-7 col-xl-7 align-self-center">
+                            <label><b>{{tenant.name}}</b></label><br>
+                            <label>{{tenant.description}}</label><br>
+                            <label>{{tenant.address}}</label><br>
+                        </div>
+                         <div class="col-lg-3 col-xl-3 align-self-center  text-center mx-auto" >
+                             <button class="btn btn-info btn-sm btn_menu" (click)="showScheduledPackage(tenant)">Menu Paket</button><br>
+                             <button class="btn btn-info btn-sm btn_menu" (click)="showMenuIndividual(tenant)">Menu Individual</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div *ngIf="mainView == 'menulist'" id="menu_list" class="row">
+                <button id="button_back" class="btn btn-warning" (click)="showTenantList()"><<Back</button>
+                <div class="col-lg-12 col-xl-12">
+                    <div class="row">
+                        <div class="col-lg-12 col-xl-12">
+                            <ul class="nav nav-tabs nav-justified">
+                                <li class="nav-item">
+                                  <a class="nav-link" [ngClass]="{'active': tenantView == 'menu'}" >Menu</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" [ngClass]="{'active': tenantView == 'review'}">Review</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" [ngClass]="{'active': tenantView == 'info'}">Info</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div *ngIf="tenantView == 'menu'" class="row">
+                        <div class="col-lg-12 col-xl-12">
+                            <div class="row object" *ngFor="let menu of listObjects"> 
+                                 <div class="col-lg-2 col-xl-2 align-self-center" >
+                                    <img class="image_menu" [src]="getTenantImageURL(menu.tenant.id, menu.image)">
+                                </div>
+                                <div class="col-lg-7 col-xl-7 align-self-center">
+                                    <label><b>{{menu.name}}</b></label><br>
+                                    <label>{{menu.description}}</label><br>
+                                </div>
+                                 <div class="col-lg-3 col-xl-3 align-self-center  text-center mx-auto" >
+                                    <label>{{menu.price}}</label><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="row">
+                <div id="pagenumber_area" class="col-lg-12 col-xl-12 text-center mx-auto">
+                    <button [ngStyle]="getStyleFor(-1)" (click)="goToPreviousPage()" >Previous</button>
+                    <button [ngStyle]="getStyleFor(0)" *ngIf="arrPageNum[0].value != 0" (click)="goToPage(arrPageNum[0].value)">{{arrPageNum[0].value}}</button>
+                    <button [ngStyle]="getStyleFor(1)" *ngIf="arrPageNum[1].value != 0" (click)="goToPage(arrPageNum[1].value)">{{arrPageNum[1].value}}</button>
+                    <button [ngStyle]="getStyleFor(2)" *ngIf="arrPageNum[2].value != 0" (click)="goToPage(arrPageNum[2].value)">{{arrPageNum[2].value}}</button>
+                    <button [ngStyle]="getStyleFor(3)" *ngIf="arrPageNum[3].value != 0" (click)="goToPage(arrPageNum[3].value)">{{arrPageNum[3].value}}</button>
+                    <button [ngStyle]="getStyleFor(4)" *ngIf="arrPageNum[4].value != 0" (click)="goToPage(arrPageNum[4].value)">{{arrPageNum[4].value}}</button>
+                    <button [ngStyle]="getStyleFor(5)" *ngIf="arrPageNum[5].value != 0" (click)="goToPage(arrPageNum[0].value)">{{arrPageNum[5].value}}</button>
+                    <button [ngStyle]="getStyleFor(6)" *ngIf="arrPageNum[6].value != 0" (click)="goToPage(arrPageNum[1].value)">{{arrPageNum[6].value}}</button>
+                    <button [ngStyle]="getStyleFor(7)" *ngIf="arrPageNum[7].value != 0" (click)="goToPage(arrPageNum[2].value)">{{arrPageNum[7].value}}</button>
+                    <button [ngStyle]="getStyleFor(8)" *ngIf="arrPageNum[8].value != 0" (click)="goToPage(arrPageNum[3].value)">{{arrPageNum[8].value}}</button>
+                    <button [ngStyle]="getStyleFor(9)" (click)="goToNextPage()">Next</button>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="col-lg-3 col-xl-3"> 
+        </div>
+    </div>
+</div>
+
+
+

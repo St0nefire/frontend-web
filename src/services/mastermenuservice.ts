@@ -6,15 +6,18 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { CredService } from './credservice';
 import { UtilService } from './utilservice';
+import { TenantService } from './tenantservice';
 
 @Injectable()
 export class MasterMenuService {
     
-    constructor(private http: Http, private utilService: UtilService, private credService: CredService) {
+    constructor(private http: Http, private utilService: UtilService, private tenantService: TenantService, private credService: CredService) {
     }
     
     mmList: any[] ;
+    tenantMmList : Map<any, any[]> = new Map<any, any[]>();
     loaded: boolean = false;
+    
     
     public reset() {
         this.mmList = null;
@@ -30,19 +33,22 @@ export class MasterMenuService {
             .map(
                 data => {
                     this.loaded = true;
-                    
-                    if(!data.errorMessage) 
-                        this.mmList = data.masterMenuList;
-                        
-                        if(this.mmList) {
-                            for (var i = 0; i < this.mmList.length ; i++) {
-                                this.mmList[i].toString = function () {
-                                    return this.name;
-                                };
-                            }
-                        }
-                    
-                    return data; 
+                    this.mmList = data.masterMenuList;
+                    return this.mapIncomingMasterMenu(data);
+                }
+            )
+    }
+    
+    public getMasterMenusByTenant(tenant) {
+        let params: URLSearchParams = new URLSearchParams();
+        let url = 'http://192.168.1.13:8080/stonefire/resource/mastermenu';
+        params.set('tenantId', tenant.id);
+        
+        return this.utilService.getRequest(url, params)
+            .map(
+                data => {
+                    this.tenantMmList.set(tenant.id, data.masterMenuList);
+                    return this.mapIncomingMasterMenu(data);
                 }
             )
     }
@@ -64,15 +70,11 @@ export class MasterMenuService {
         return this.utilService.postRequestWithForm(url, formData)
                     .map(
                         data => {
-                            if(!data.errorMessage) {
-                                
-                                    
-                                if (!this.mmList) {
-                                    this.mmList = [];
-                                }
-
-                                this.mmList.push(data);
+                            if (!this.mmList) {
+                                this.mmList = [];
                             }
+
+                            this.mmList.push(data);
                                 
                             return data; 
                         }
@@ -92,15 +94,12 @@ export class MasterMenuService {
         formData.append("sessionString", this.credService.sessionString);
         return this.utilService.putRequestWithForm(url, formData)
                    .map(
-                        data => {
-                            if(!data.errorMessage) {
-                                
-                                if (this.mmList) {
-                                    for (var i = 0; i < this.mmList.length; i++) {
-                                        if (this.mmList[i].id == data.id) {
-                                            this.mmList[i] = data;
-                                            break;
-                                        }
+                        data => {                                
+                            if (this.mmList) {
+                                for (var i = 0; i < this.mmList.length; i++) {
+                                    if (this.mmList[i].id == data.id) {
+                                        this.mmList[i] = data;
+                                        break;
                                     }
                                 }
                             }
@@ -122,14 +121,39 @@ export class MasterMenuService {
         return this.utilService.deleteRequest(url, params);
     }
     
-    findById(id) {
-        if (this.mmList) {
-            let retval = this.mmList.filter(mm => {
-                return mm.id == id;
-            });
-            
-            if (retval && retval.length > 0)
-                return retval[0];
+    findById(tenant, id) {
+        if ((!tenant) || (this.tenantService.currentTenant && tenant.id == this.tenantService.currentTenant.id)) {
+            if (this.mmList) {
+                let retval = this.mmList.filter(mm => {
+                    return mm.id == id;
+                });
+                if (retval && retval.length > 0)
+                    return retval[0];
+            }
         }
+        else {
+            let listMM: any[] = this.tenantMmList.get(tenant.id);
+            if (listMM) {
+                let retval = listMM.filter(mm => {
+                    return mm.id == id;
+                });
+
+                if (retval && retval.length > 0)
+                    return retval[0];
+            }
+        }
+    }
+    
+    private mapIncomingMasterMenu(data) {
+        if(data.masterMenuList) {
+            for (var i = 0; i < data.masterMenuList.length ; i++) {
+                data.masterMenuList[i].toString = function () {
+                    return this.name;
+                };
+                data.masterMenuList[i].tenant = this.tenantService.findById(null, null, data.masterMenuList[i].tenantId);
+            }
+        }
+
+        return data.masterMenuList; 
     }
 }

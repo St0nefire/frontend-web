@@ -123,6 +123,7 @@
                 display: inline-block;
                 position: relative;
                 width: 100%;
+                margin-top: 0.5rem;
                 
                 label {
                     display: inline-block;
@@ -137,6 +138,7 @@
             }
             
             ul {
+                margin-bottom: 0.5rem;
                 li {
                     font-size: 0.7rem;
                     word-wrap: false;

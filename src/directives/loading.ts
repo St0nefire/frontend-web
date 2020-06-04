@@ -62,6 +62,7 @@ export class LoadingDirective {
         }
         else {
             if (this._loading) {
+                console.log("REMOVED");
                 document.body.removeChild(this.iDiv);
             }
         }

@@ -16,7 +16,6 @@ import { MenuPaketGroup } from '../menupaketgroup/menupaketgroup'
  })
 export class HomePage {
     
-    isError: boolean = false;
     
     constructor(private mmService: MasterMenuService, private miService: MenuIndividualService, private spService: ScheduledPackageService, private utilService: UtilService, private tagService: TagService) {
 //        console.log(" NUMBER OF DAYS: " + (new Date((new Date()).getFullYear(), (new Date()).getMonth() + 1, 0)).getDate());
@@ -28,50 +27,45 @@ export class HomePage {
                     if(data.errorMessage) {
                         alert("ERROR RESPONSE: " + data.errorMessage);
                         return;
-                    }                    
-                },
-                error => {
-                    this.isError = true;
-                }
-            )
-            
-            let obs2 = this.spService.getScheduledPackages();
-            obs2.subscribe(
-                data => {
-                    if(data.errorMessage) {
-                        alert("ERROR RESPONSE: " + data.errorMessage);
-                        return;
-                    }
-                },
-                error => {
-                    this.isError = true;
-                }
-            )
+                    }  
+                    
+                    let obs2 = this.spService.getScheduledPackages();
+                    obs2.subscribe(
+                        data => {
+
+                        },
+                        error => {
+                            this.isError = true;
+                            console.log("ERROR: " + error)
+                        }
+                    )
 
 
-            let obs3 = this.miService.getMenuIndividuals();
-            obs3.subscribe(
-                data => {
-                    if(data.errorMessage) {
-                        alert("ERROR RESPONSE: " + data.errorMessage);
-                        return;
+                    let obs3 = this.miService.getMenuIndividuals();
+                    obs3.subscribe(
+                        data => {
+
+                        },
+                        error => {
+                            this.isError = true;
+                            console.log("ERROR: " + error)
+                        }
+                    )                  
+                        },
+                    error => {
+                        this.isError = true;
+                        console.log("ERROR: " + error)
                     }
-                },
-                error => {
-                    this.isError = true;
-                }
-            )
-            
+                )
+                        
             let obs4 = this.tagService.getTags();
             obs4.subscribe(
                 data => {
-                    if(data.errorMessage) {
-                        alert("ERROR RESPONSE: " + data.errorMessage);
-                        return;
-                    }
+                    
                 },
                 error => {
                     this.isError = true;
+                    console.log("ERROR: " + error)
                 }
             )
         }, 1500);
@@ -82,6 +76,7 @@ export class HomePage {
     miReady: boolean = false;
     spReady: boolean = false;
     tagReady: boolean = false;
+    isError: boolean = false;
     
     @ViewChild("mmGroup") mmGroup: MasterMenuGroup;
     @ViewChild("miGroup") miGroup: MenuIndividualGroup;
@@ -102,6 +97,9 @@ export class HomePage {
     isLoading() {        
         // pastikan hanya me refesh data sekali saja ketika data datang untuk pertama kali karena method ini dipanggil
         // otomatis berkali-kali oleh anngular
+        
+        if (this.isError)
+            return false;
         
         if (!this.tagService.loaded) {
             return true;
@@ -133,10 +131,7 @@ export class HomePage {
         }
         else
             return true;
-        
-//        else
-//            return true;
-        
+
         return false;
     }
  }

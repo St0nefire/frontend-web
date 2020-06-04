@@ -26,7 +26,7 @@ export class AddMenuIndividual {
     formData:FormData ;
     showMenu: boolean = false;
     isLoading: boolean = false;
-//    menus: any[] = [];
+    menus: any[] = [];
     
     @ViewChild("inputName") inputName: any;
     @ViewChild("inputFakeFile") inputFakeFile: any;
@@ -44,13 +44,19 @@ export class AddMenuIndividual {
             this.fileUrl = this.credService.getImageURL(mi.image);
             this.fileName = mi.image;
             this.image = null;
+            this.menus = [];
+            if(this.menuIndividual.menus) {
+                for(var i=0; i < this.menuIndividual.menus.length; i++) {
+                    this.menus.push(this.menuIndividual.menus[i].menu);
+                }
+            }
         }
         else {
             this.menuIndividual = {name: "", konten: "", memo: "", price: null, tags: null, menus: null};
             this.fileUrl = null;
             this.fileName = null;
             this.image = null;
-//            this.menus = [];
+            this.menus = [];
         }
     }  
         

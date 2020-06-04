@@ -40,3 +40,4 @@ export class MenuIndividualGroup {
         this.currentView = 'menuindividual';
     }    
 }
+
